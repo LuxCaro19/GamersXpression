@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,30 +20,18 @@
 
             <div class="col l12">
 
-                <div class="col l8 m6 s12">
 
-                <h4 class="white-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aut ab id eveniet molestias deleniti neque numquam, excepturi, unde in mollitia eos necessitatibus exercitationem accusamus cum? Eaque ullam omnis officiis!</h4>
-
-                </div>
-
-                <div class="col l4 m6 s12">
+                <div class="col l4 m6 s12 offset-l4">
 
 
                     <div class="card">
 
 
-                        <form action="controllers/Login.php" method="POST">
+                        <form action="controllers/Registrarse.php" method="POST">
 
                             <div class="card-content">
 
-                                <h4 class="center">Bienvenido a</h4>
-
-                                <div class="imgLogin center">
-
-                                    <img src="img/Logo.png" alt="300">
-
-
-                                </div>
+                                <h4 class="center">Registrate</h4>
 
                                 <div class="card-errors">
 
@@ -68,8 +53,16 @@
 
                                 <div class="input-field">
 
-                                    <input type="text" name="correoUsuario" id="nombre">
+                                    <input type="text" name="correoUsuario" id="correo">
                                     <label for="nombre">Correo</label>
+
+                                </div>
+
+                                <div class="input-field">
+
+                                    <input type="text" name="nombreUsuario" id="nombre">
+                                    <label for="clave">Nombre</label>
+
 
                                 </div>
 
@@ -86,17 +79,6 @@
                                     <button class="btn-large">Iniciar Sesión</button>
 
 
-
-
-                                </div>
-
-                                <div class="center">
-
-                                    <span>¿No tienes una cuenta? </span>
-
-                                    <a href="registrarse.php">¡Registrate!</a>
-
-                                    <p>¡Es gratis!</p>
 
 
                                 </div>
