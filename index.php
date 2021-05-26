@@ -25,7 +25,7 @@
 
                 <div class="col l8 m6 s12">
 
-                <h4 class="white-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aut ab id eveniet molestias deleniti neque numquam, excepturi, unde in mollitia eos necessitatibus exercitationem accusamus cum? Eaque ullam omnis officiis!</h4>
+                <h2 class="white-text">¿Qué es GamersXpression?</h2>
 
                 </div>
 
@@ -39,7 +39,7 @@
 
                             <div class="card-content">
 
-                                <h4 class="center">Bienvenido a</h4>
+                                <h4 class="center">Bienvenide e</h4>
 
                                 <div class="imgLogin center">
 
@@ -48,7 +48,7 @@
 
                                 </div>
 
-                                <div class="card-errors">
+                                <div class="">
 
                                     <?php
                                     session_start();

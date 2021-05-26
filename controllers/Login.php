@@ -39,13 +39,23 @@ class ControlLogin{
             
             header("Location: ../index.php");
             return;
-        }else{
-
-            header("Location: ../view/Publicaciones.php");
-
         }
+        $sesion=$array[0];
 
-        // $a = $array[0];
+        switch ($sesion["estado"]) {
+            case "HABILITADO":
+                $_SESSION['user'] = $sesion;
+                header("Location: ../view/publicaciones.php");
+                break;
+            case "BLOQUEADO":
+                header("Location: ../view/viewBlock.php");
+                break;
+            default:
+                //no se que podria ir aqui, quizas un  error o algo
+                $_SESSION ['error'] = "Usuario no encontrado.";
+                header("Location: ../index.php");
+                break;
+        } 
 
        
         

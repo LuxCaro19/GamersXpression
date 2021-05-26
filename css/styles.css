@@ -1,5 +1,5 @@
 body {
-    
+    background-color: #ECE9E9;;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -15,12 +15,36 @@ body {
     box-shadow: 0 1px 0 0 rgb(0, 0, 0) !important;
   }
 
+  .tam{
 
+    font-size: 20px;
+
+  }
   
+  .view-publicacion .card{
+
+
+    border-radius: 5px;
+
+
+  }
+
+  .contenido{
+
+
+    font-family: 'Roboto', sans-serif;
+    margin-top: 30px;
+
+
+  }
   /*.input-field:hover {
     /*background-color: rgba(206, 206, 206, 0.637);*/
    /* padding: 5px;
     border-radius: 10px;
+
+
+
+    
   }*/
   
   
@@ -66,7 +90,7 @@ body {
   }
   
   nav ul li.active {
-    background-color: rgb(0 157 189 / 64%);
+    background-color: rgb(24, 7, 97);;
   }
   
   .sidenav li.active {
@@ -74,11 +98,11 @@ body {
   }
   
   nav ul li:hover {
-    background-color: rgba(52, 179, 202, 0.493);
+    background-color: rgb(33, 42, 175);
   }
   
   .sidenav li:hover {
-    background-color: rgba(52, 179, 202, 0.493);
+    background-color: rgb(24, 7, 97);
   }
   
   .letra-oscura input {
@@ -191,7 +215,7 @@ body {
     width: 270px;
   }
   
-  .card-errors {
+ /* .card-errors {
     display: grid;
     grid-template-columns: 1fr;
     background: rgba(17, 16, 16, 0.425);
@@ -199,7 +223,7 @@ body {
     align-items: center;
   
     border-radius: 10px;
-  }
+  }*/
   
   .datepicker-table td.is-selected {
       background-color: #009dbd;
@@ -244,7 +268,7 @@ body {
   }
   
   .nav-wrapper img {
-    width: 110px;
+    width: 300px;
     margin-top: 8px;
     margin-left: 140px;
   }

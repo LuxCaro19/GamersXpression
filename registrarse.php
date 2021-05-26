@@ -13,6 +13,8 @@
 
 <body background="img/IndexBack.jpg">
 
+
+
     <div class="container">
 
 
@@ -33,7 +35,7 @@
 
                                 <h4 class="center">Registrate</h4>
 
-                                <div class="card-errors">
+                                <div class="">
 
                                     <?php
                                     session_start();
@@ -76,7 +78,7 @@
 
                                 <div class="input-field center-align back-field-desactived">
 
-                                    <button class="btn-large">Iniciar Sesión</button>
+                                    <button class="btn-large">Registrarse</button>
 
 
 
