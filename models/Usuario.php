@@ -32,6 +32,12 @@ class Usuario{
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function BuscarUsuarioCorreo($correo){
+        $stm = Conexion::conector()->prepare("SELECT * FROM usuario WHERE correo=:correo");
+        $stm->bindParam(":correo",$correo);
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
 
 
 }
