@@ -39,7 +39,7 @@
 
                             <div class="card-content">
 
-                                <h4 class="center">Bienvenide e</h4>
+                                <h4 class="center">Bienvenido a</h4>
 
                                 <div class="imgLogin center">
 

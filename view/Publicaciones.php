@@ -1,3 +1,19 @@
+<?php
+
+use models\Publicacion as Publicacion;
+
+require_once("../models/Publicacion.php");
+
+
+$modelo = new Publicacion();
+$publicaciones = $modelo->cargarPublicacionesJoin();
+
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,32 +66,100 @@
 
             <div class="row view-publicacion">
 
+
+
                 <div class="card">
 
+                    <div class="cont-createPubl">
 
-                    <div class="card-content">
-
-                        <span class="right">Videojuego: <a href="#">GTA 6</a></span>
-                        <h4>Titulo de publicacion</h4>
-                        <span>Publicado por: <?=$_SESSION['user']['nombre']?></span>    
-                        <span class="right">fecha 3/3/666</span>
+                        <div class="icon-panel">
 
 
-                        <div class="contenido">
+                            <img src="../img/Icon.png" alt="">
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Esse eum adipisci delectus alias repellat odit atque soluta
-                                modi iste aliquam beatae corrupti facilis,
-                                iure possimus sapiente quasi quidem quas similique.
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                Ex, cum tenetur nam laborum voluptate voluptatum perferendis nobis ratione enim iusto
-                                vitae eligendi veritatis, blanditiis, earum autem exercitationem eius. Iusto, quia.
 
-                            </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Esse eum adipisci delectus alias repellat odit atque soluta
-                                modi iste aliquam beatae corrupti facilis,
-                                iure possimus sapiente quasi quidem quas similique.</p>
+                        </div>
+
+                        <div class="box-realizarPubl">
+
+
+                            <p>¡Expresa tu opinion! Escribe aquí tu opinion y publica</p>
+
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+                <?php foreach ($publicaciones as $p) { ?>
+
+                    <div class="card">
+
+
+                        <div class="card-content">
+
+                            <span class="right">Videojuego: <a href="#"><?= $p["juego"]  ?></a></span>
+                            <h4><?= $p["titulo"]  ?></h4>
+                            <span>Publicado por: <?= $p["usuario"] ?></span>
+                            <span class="right"> <?= $p["fecha"]  ?> </span>
+
+
+                            <div class="contenido">
+
+                                <p>
+
+                                    <?= $p["contenido"]  ?>
+
+                                </p>
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+
+                        <div class="info-likes-comments">
+
+                            <span><img src="../img/likeIcon.png" alt=""> <?= $p["me_gusta"] ?> </span>
+                            <span class="margin-left-span">
+                                Comentarios: 
+
+                                <?php
+
+                                    $idValue=$p["id_publicacion"];
+
+                                    $count_comment = $modelo->commentCount($idValue);
+
+                                    foreach($count_comment as $c){
+
+                                        echo $c["count"];
+
+                                    }
+
+                                ?>
+
+                
+
+
+                            </span>
 
                         </div>
 
@@ -83,9 +167,11 @@
 
 
 
+
                     </div>
 
-                </div>
+                <?php } ?>
+
             </div>
 
         </div>
