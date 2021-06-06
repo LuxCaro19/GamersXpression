@@ -1,12 +1,12 @@
 <?php
-
+session_start();
 use models\Publicacion as Publicacion;
 
 require_once("../models/Publicacion.php");
 
-
+$id=$_SESSION['user']['id_usuario'];
 $modelo = new Publicacion();
-$publicaciones = $modelo->cargarPublicacionesJoin();
+$publicaciones = $modelo->cargarPublicacionesWhere($id);
 
 
 
@@ -37,7 +37,7 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
 
 
     <?php
-    session_start();
+    
     if (isset($_SESSION['user'])) { ?>
 
 
@@ -52,8 +52,8 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
 
+                    <li><a href="publicaciones.php">Ver Publicaciones</a></li>
                     <li><a href="VideojuegosList.php">Ver Videojuegos</a></li>
-                    <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
                     <li><a><span class="white-text tam">
                                 <<-| Usuario: <?= $_SESSION['user']['nombre'] ?> |->>

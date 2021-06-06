@@ -78,8 +78,10 @@ body {
 
   .box-realizarPubl p{
 
-    margin-left: 40px;
-    font-size: 15px;
+    margin-left: 50px;
+    padding-top: 7px;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
     
 
   }
@@ -106,9 +108,79 @@ body {
     margin-left: 70px;
 
   }
+  .login {
+    margin-top: 136px;
+  }
 
+
+  .login .card {
+    background: rgb(225 225 225 / 81%);
+    border-radius: 5px;
+    
+  }
+  
+  .login label {
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+  }
   
 
+  .card-action {
+    border-radius: 10px;
+  }
+  
+  .login input {
+    font-size: 20px !important;
+    color: rgb(0, 0, 0);
+    font-family: 'Odibee Sans', cursive;
+    border-bottom: 1px solid rgb(0, 0, 0) !important;
+  }
+  
+  .login button:hover {
+    background: rgba(0, 35, 190, 0.904);
+  }
+  
+
+  .cardRealizar-publicacion label{
+
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+
+  }
+
+  .cardRealizar-publicacion input{
+
+    font-size: 20px !important;
+    color: rgb(0, 0, 0);
+    font-family: 'Odibee Sans', cursive;
+    border-bottom: 1px solid rgb(0, 0, 0) !important;
+
+  }
+
+  .cardRealizar-publicacion button:hover {
+    background: rgba(0, 35, 190, 0.904);
+  }
+  
+  select {
+    /*background-color: rgb(236, 236, 236);*/
+    font-size: 20px !important;
+    color: rgb(0, 0, 0);
+    font-family: 'Odibee Sans', cursive;
+    border-bottom: 1px solid black;
+    
+  }
+
+  .input-image input{
+
+    border-bottom: 0px solid rgb(0, 0, 0) !important;
+    width: 100%;
+
+  }
+
+  p.white-text.parrafoIndex {
+    font-size: 20px;
+    
+  }
 
   /*.input-field:hover {
     /*background-color: rgba(206, 206, 206, 0.637);*/
@@ -189,30 +261,30 @@ body {
   }
   
   .input-field textarea:focus {
-    border-bottom: 1px solid rgb(57, 209, 255) !important;
-    box-shadow: 0 1px 0 0 rgb(57, 209, 255) !important;
+    border-bottom: 1px solid rgb(0, 0, 0) !important;
+    box-shadow: 0 1px 0 0 rgb(0, 0, 0) !important;
   }
   
   .letra-oscura textarea:focus + label {
-    color: rgb(76, 159, 187) !important;
+    color: rgb(0, 0, 0) !important;
   }
   /* label underline focus color */
   .letra-oscura textarea:focus {
-    border-bottom: 1px solid rgb(76, 159, 187) !important;
-    box-shadow: 0 1px 0 0 rgb(76, 159, 187) !important;
+    border-bottom: 1px solid rgb(0, 0, 0) !important;
+    box-shadow: 0 1px 0 0 rgb(0, 0, 0) !important;
   }
   
   .letra-oscura textarea {
     font-size: 20px !important;
-    color: rgb(48, 106, 126);
-    border-bottom: 1px solid rgb(48, 106, 126) !important;
+    color: rgb(0, 0, 0);
+    border-bottom: 1px solid rgb(0, 0, 0) !important;
   
     font-family: "Architects Daughter", cursive;
   }
   
   .letra-oscura label {
     font-size: 16px;
-    color: rgb(48, 106, 126);
+    color: rgb(0, 0, 0);
   }
   
   .letra-oscura button:hover {
@@ -223,44 +295,7 @@ body {
     color: rgb(48, 106, 126);
   }
   
-  .login {
-    margin-top: 136px;
-  }
-
-
-  .login .card {
-    background: rgb(225 225 225 / 81%);
-    border-radius: 5px;
-    
-  }
-  
-  .login label {
-    font-size: 16px;
-    color: rgb(0, 0, 0);
-  }
-  
-/*  .imgLogin img {
-
-    width: 50px;
-    height: 80px;
-
-  }*/
-
-  .card-action {
-    border-radius: 10px;
-  }
-  
-  .login input {
-    font-size: 20px !important;
-    color: rgb(0, 0, 0);
-    font-family: 'Odibee Sans', cursive;
-    border-bottom: 1px solid rgb(0, 0, 0) !important;
-  }
-  
-  .login button:hover {
-    background: rgba(0, 35, 190, 0.904);
-  }
-  
+ 
   .error .card {
     background: rgba(199, 199, 199, 0.664);
     border-radius: 10px;
