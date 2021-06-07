@@ -1,10 +1,12 @@
 <?php
 
 use models\Publicacion as Publicacion;
+use models\Gusta as Gusta;
 
+require_once("../models/MeGusta.php");
 require_once("../models/Publicacion.php");
 
-
+$gusta = new Gusta();
 $modelo = new Publicacion();
 $publicaciones = $modelo->cargarPublicacionesJoin();
 
@@ -142,7 +144,21 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
 
                         <div class="info-likes-comments">
 
-                            <span><img src="../img/likeIcon.png" alt=""> <?= $p["me_gusta"] ?> </span>
+                            <span>
+                            <!-- este formulario es para poder enviar el id de la publicacion al controlador al momento de dar "me gusta    " -->
+                            <form action="../controllers/ControlMeGusta.php" method="POST">
+
+                            <input type="hidden" name="id_publicacion" value="<?= $p["id_publicacion"] ?>" />
+                            <a href="#" onclick="this.parentNode.submit()">
+                                <img src="../img/likeIcon.png" alt=""> <?= $gusta->Buscar($p["id_publicacion"])["0"]["total"] ?> </span>
+                            </a>
+
+                            </form>
+                            
+                            
+                            
+                            
+                            
                             <span class="margin-left-span">
                                 Comentarios:
 
