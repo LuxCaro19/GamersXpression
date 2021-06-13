@@ -1,11 +1,15 @@
 <?php
 session_start();
+
 use models\Publicacion as Publicacion;
+use models\Gusta as Gusta;
 
 require_once("../models/Publicacion.php");
+require_once("../models/MeGusta.php");
 
-$id=$_SESSION['user']['id_usuario'];
+$id = $_SESSION['user']['id_usuario'];
 $modelo = new Publicacion();
+$gusta = new Gusta();
 $publicaciones = $modelo->cargarPublicacionesWhere($id);
 
 
@@ -37,7 +41,7 @@ $publicaciones = $modelo->cargarPublicacionesWhere($id);
 
 
     <?php
-    
+
     if (isset($_SESSION['user'])) { ?>
 
 
@@ -142,7 +146,20 @@ $publicaciones = $modelo->cargarPublicacionesWhere($id);
 
                         <div class="info-likes-comments">
 
-                            <span><img src="../img/likeIcon.png" alt=""> <?= $p["me_gusta"] ?> </span>
+
+                            <span>
+                                <!-- este formulario es para poder enviar el id de la publicacion al controlador al momento de dar "me gusta    " -->
+                                <form action="../controllers/ControlMeGusta.php" method="POST">
+
+                                    <input type="hidden" name="id_publicacion" value="<?= $p["id_publicacion"] ?>" />
+                                    <a href="#" onclick="this.parentNode.submit()">
+                                        <img src="../img/likeIcon.png" alt=""> <?= $gusta->Buscar($p["id_publicacion"])["0"]["total"] ?>
+
+                                    </a>
+
+                                </form>
+
+                            </span>
                             <span class="margin-left-span">
                                 Comentarios:
 
@@ -163,6 +180,13 @@ $publicaciones = $modelo->cargarPublicacionesWhere($id);
 
 
                             </span>
+
+
+                            <form action="detallePublicacion.php" method="POST">
+
+                                <button name="id" id="id" value=<?= $p["id_publicacion"] ?>>Ver publicacion</button>
+
+                            </form>
 
                         </div>
 
