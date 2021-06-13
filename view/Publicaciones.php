@@ -189,7 +189,7 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
 
                             </span>
 
-                            <form action="detallePublicacion.php" method="POST">
+                            <form action="detallePublicacion.php" method="GET">
 
                                 <button name="id" id="id" value=<?= $p["id_publicacion"] ?>>Ver publicacion</button>
 

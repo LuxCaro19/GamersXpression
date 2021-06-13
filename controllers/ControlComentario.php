@@ -16,9 +16,10 @@ class ControlComentario{
     public function __construct()
     {
 
-        $this->id_public=$_POST['id_public'];
+        $this->id_public=$_POST['id'];
         $this->coment=$_POST['comentario'];
         $this->fecha = date('Y-m-d H:i:s');
+        
         
     }
 
@@ -30,7 +31,8 @@ class ControlComentario{
         session_start();
 
         $id_user=$_SESSION["user"]["id_usuario"];
-        
+        //aqui se genera un enlace a la publicacion 
+        $codigo = "../view/detallePublicacion.php?id=".$this->id_public;
 
         $model= new Comentarios();
 
@@ -38,7 +40,7 @@ class ControlComentario{
 
 
             $_SESSION ['error'] = "Realice un comentario";
-            header("Location: ../view/detallePublicacion.php");
+            header("Location: $codigo");
 
             $_SESSION['id_public']=$this->id_public;
             
@@ -56,7 +58,7 @@ class ControlComentario{
         if($count==1){
 
 
-            header("Location: ../view/detallePublicacion.php");
+            header("Location: $codigo");
 
             $_SESSION['id_public']=$this->id_public;
             
