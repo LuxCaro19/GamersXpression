@@ -182,6 +182,46 @@ body {
     
   }
 
+  .card-comentarios{
+
+
+    background-color: #cdcdcd;
+    padding: 3px;
+
+  }
+
+  .card.margin{
+
+
+    margin: 10px;
+
+  }
+
+  .card-content.parComent p{
+
+    margin-bottom: 5px;
+    font-size: 18px;
+    margin-left: 5px;
+    
+
+  }
+
+  .card-content.parComent span{
+
+    font-size: 13px;
+    font-family: 'Roboto', sans-serif;
+
+  }
+
+
+
+  .items-comentar{
+
+    display: grid;
+    grid-template-columns: 1.7fr 0.3fr;
+    padding: 10px;
+
+  }
   /*.input-field:hover {
     /*background-color: rgba(206, 206, 206, 0.637);*/
    /* padding: 5px;
