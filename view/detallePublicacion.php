@@ -21,22 +21,10 @@ $coment = new Comentarios();
 
 
 
-if (isset($_SESSION['id_public'])) {
-
-
-
-    $count_comment = $model->commentCount($_SESSION['id_public']);
-    $publicacion = $model->cargarPublicacionSeleccionada($_SESSION['id_public']);
-    $comentarios = $coment->cargarComentarios($_SESSION['id_public']);
-    unset($_SESSION['id_public']);
-
-} else {
-
-    $id_public = $_POST['id'];
-    $count_comment = $model->commentCount($id_public);
-    $comentarios = $coment->cargarComentarios($id_public);
-    $publicacion = $model->cargarPublicacionSeleccionada($id_public);
-}
+    
+    $count_comment = $model->commentCount($_GET['id']);
+    $comentarios = $coment->cargarComentarios($_GET['id']);
+    $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
 
 
 ?>
@@ -177,7 +165,9 @@ if (isset($_SESSION['id_public'])) {
 
                                         <div class="input-field back-field-desactived">
 
-                                            <button class="btn right" name="id_public" value=<?= $p['id_publicacion'] ?>>Comentar</button>
+
+
+                                            <button class="btn right" name="id" value=<?= $p['id_publicacion'] ?>>Comentar</button>
 
 
 

@@ -45,7 +45,7 @@ class Publicacion{
                                                     inner join juego j on j.id_juego=p.id_juego 
                                                     inner join compania c on c.id_compania=j.id_compania
                                                     inner join categoria cat on cat.id_categoria=j.id_categoria
-                                                    WHERE id_publicacion=$id");
+                                                    WHERE id_publicacion=:id");
         
         $stm->bindParam(":id",$id);
         $stm->execute();
