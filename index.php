@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body background="img/IndexBack.jpg">
@@ -25,9 +26,45 @@
 
                 <div class="col l8 m6 s12">
 
-                <h4 class="white-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aut ab id eveniet molestias deleniti neque numquam, excepturi, unde in mollitia eos necessitatibus exercitationem accusamus cum? Eaque ullam omnis officiis!</h4>
+                <h2 class="white-text">¿Qué es GamersXpression?</h2>
+                <p class="white-text parrafoIndex">
+                    Es una web dedicada para la comunidad Gamer, enfocada
+                    en la critica, reseñas, opiniones y discuciones de Videojuegos,
+                    como expresar molestias y posibles cambios que te gustaria que agregaran a tus
+                    juegos. Esta Web es amplia, puedes encontrar diferentes opiniones de diferentes jugadores, 
+                    aquí tu y todos pueden ser especialistas.
+                </p>
+
+                <h4 class="white-text">¡Disfruta la web y opina con la comunidad!</h4>
+
+                <div class="col l4">
+                
+                <i class="medium material-icons white-text">add</i> 
+                <p class="white-text center">
+                
+                Aprovecha las virtudes y hazle llamar tu atencion a las grandes compañias, haz oir tus quejas, haz oir tus deseos</p>
 
                 </div>
+
+                
+                <div class="col l4">
+                <i class="medium material-icons white-text">add</i> 
+
+                <p class="white-text center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quasi hic, omnis voluptates dolores a? Molestias praesentium ipsa accusantium dicta, qui velit eius non at animi, quod reprehenderit. Iusto, rem?</p>
+
+                </div>
+
+    
+                <div class="col l4">
+                <i class="medium material-icons white-text">add</i> 
+                <p class="white-text center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste dolor, veniam at quisquam quibusdam quod facere nobis distinctio sequi quam doloribus illum sint ut nisi optio a? Iusto, eaque nihil!</p>
+
+                </div>
+
+
+                </div>
+
+                
 
                 <div class="col l4 m6 s12">
 
@@ -48,7 +85,7 @@
 
                                 </div>
 
-                                <div class="card-errors">
+                                <div class="">
 
                                     <?php
                                     session_start();

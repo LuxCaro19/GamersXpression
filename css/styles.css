@@ -1,5 +1,5 @@
 body {
-    
+    background-color: #ECE9E9;;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -15,12 +15,221 @@ body {
     box-shadow: 0 1px 0 0 rgb(0, 0, 0) !important;
   }
 
+  .tam{
 
+    font-size: 20px;
+
+  }
   
+  .view-publicacion .card{
+
+
+    border-radius: 5px;
+
+
+  }
+
+  .contenido{
+
+
+    font-family: 'Roboto', sans-serif;
+    margin-top: 30px;
+
+
+  }
+
+  .card-content img {
+    width: 270px;
+  }
+
+  .cont-createPubl{
+
+    display: grid;
+    grid-template-columns: 0.5fr 1.9fr;
+    padding: 2px;
+
+
+  }
+
+  .icon-panel{
+
+    width: 200px;
+
+  }
+
+  .icon-panel img{
+
+
+    width: 150px;
+
+
+  }
+
+  .box-realizarPubl{
+
+    
+    background-color: #bebdbdcb;
+    height: 50px;
+    margin-top: 30px;
+    margin-right: 50px;
+    border-radius: 80px;
+
+  }
+
+  .box-realizarPubl p{
+
+    margin-left: 50px;
+    padding-top: 7px;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    
+
+  }
+
+
+  .info-likes-comments{
+
+    width: 300px;
+    margin-left: 40px;
+    padding-bottom: 15px;
+
+  }
+
+  .info-likes-comments img{
+
+    width: 20px;
+    margin-right: 4px;
+    
+
+  }
+
+  .margin-left-span {
+
+    margin-left: 70px;
+
+  }
+  .login {
+    margin-top: 136px;
+  }
+
+
+  .login .card {
+    background: rgb(225 225 225 / 81%);
+    border-radius: 5px;
+    
+  }
+  
+  .login label {
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+  }
+  
+
+  .card-action {
+    border-radius: 10px;
+  }
+  
+  .login input {
+    font-size: 20px !important;
+    color: rgb(0, 0, 0);
+    font-family: 'Odibee Sans', cursive;
+    border-bottom: 1px solid rgb(0, 0, 0) !important;
+  }
+  
+  .login button:hover {
+    background: rgba(0, 35, 190, 0.904);
+  }
+  
+
+  .cardRealizar-publicacion label{
+
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+
+  }
+
+  .cardRealizar-publicacion input{
+
+    font-size: 20px !important;
+    color: rgb(0, 0, 0);
+    font-family: 'Odibee Sans', cursive;
+    border-bottom: 1px solid rgb(0, 0, 0) !important;
+
+  }
+
+  .cardRealizar-publicacion button:hover {
+    background: rgba(0, 35, 190, 0.904);
+  }
+  
+  select {
+    /*background-color: rgb(236, 236, 236);*/
+    font-size: 20px !important;
+    color: rgb(0, 0, 0);
+    font-family: 'Odibee Sans', cursive;
+    border-bottom: 1px solid black;
+    
+  }
+
+  .input-image input{
+
+    border-bottom: 0px solid rgb(0, 0, 0) !important;
+    width: 100%;
+
+  }
+
+  p.white-text.parrafoIndex {
+    font-size: 20px;
+    
+  }
+
+  .card-comentarios{
+
+
+    background-color: #cdcdcd;
+    padding: 3px;
+
+  }
+
+  .card.margin{
+
+
+    margin: 10px;
+
+  }
+
+  .card-content.parComent p{
+
+    margin-bottom: 5px;
+    font-size: 18px;
+    margin-left: 5px;
+    
+
+  }
+
+  .card-content.parComent span{
+
+    font-size: 13px;
+    font-family: 'Roboto', sans-serif;
+
+  }
+
+
+
+  .items-comentar{
+
+    display: grid;
+    grid-template-columns: 1.7fr 0.3fr;
+    padding: 10px;
+
+  }
   /*.input-field:hover {
     /*background-color: rgba(206, 206, 206, 0.637);*/
    /* padding: 5px;
     border-radius: 10px;
+
+
+
+    
   }*/
   
   
@@ -33,6 +242,8 @@ body {
     padding: 5px;
     border-radius: 10px;
   }
+
+  
   
   .back-field:hover label{
   
@@ -66,7 +277,7 @@ body {
   }
   
   nav ul li.active {
-    background-color: rgb(0 157 189 / 64%);
+    background-color: rgb(24, 7, 97);;
   }
   
   .sidenav li.active {
@@ -74,11 +285,11 @@ body {
   }
   
   nav ul li:hover {
-    background-color: rgba(52, 179, 202, 0.493);
+    background-color: rgb(33, 42, 175);
   }
   
   .sidenav li:hover {
-    background-color: rgba(52, 179, 202, 0.493);
+    background-color: rgb(24, 7, 97);
   }
   
   .letra-oscura input {
@@ -90,30 +301,30 @@ body {
   }
   
   .input-field textarea:focus {
-    border-bottom: 1px solid rgb(57, 209, 255) !important;
-    box-shadow: 0 1px 0 0 rgb(57, 209, 255) !important;
+    border-bottom: 1px solid rgb(0, 0, 0) !important;
+    box-shadow: 0 1px 0 0 rgb(0, 0, 0) !important;
   }
   
   .letra-oscura textarea:focus + label {
-    color: rgb(76, 159, 187) !important;
+    color: rgb(0, 0, 0) !important;
   }
   /* label underline focus color */
   .letra-oscura textarea:focus {
-    border-bottom: 1px solid rgb(76, 159, 187) !important;
-    box-shadow: 0 1px 0 0 rgb(76, 159, 187) !important;
+    border-bottom: 1px solid rgb(0, 0, 0) !important;
+    box-shadow: 0 1px 0 0 rgb(0, 0, 0) !important;
   }
   
   .letra-oscura textarea {
     font-size: 20px !important;
-    color: rgb(48, 106, 126);
-    border-bottom: 1px solid rgb(48, 106, 126) !important;
+    color: rgb(0, 0, 0);
+    border-bottom: 1px solid rgb(0, 0, 0) !important;
   
     font-family: "Architects Daughter", cursive;
   }
   
   .letra-oscura label {
     font-size: 16px;
-    color: rgb(48, 106, 126);
+    color: rgb(0, 0, 0);
   }
   
   .letra-oscura button:hover {
@@ -124,44 +335,7 @@ body {
     color: rgb(48, 106, 126);
   }
   
-  .login {
-    margin-top: 136px;
-  }
-
-
-  .login .card {
-    background: rgb(225 225 225 / 81%);
-    border-radius: 5px;
-    
-  }
-  
-  .login label {
-    font-size: 16px;
-    color: rgb(0, 0, 0);
-  }
-  
-/*  .imgLogin img {
-
-    width: 50px;
-    height: 80px;
-
-  }*/
-
-  .card-action {
-    border-radius: 10px;
-  }
-  
-  .login input {
-    font-size: 20px !important;
-    color: rgb(0, 0, 0);
-    font-family: 'Odibee Sans', cursive;
-    border-bottom: 1px solid rgb(0, 0, 0) !important;
-  }
-  
-  .login button:hover {
-    background: rgba(0, 35, 190, 0.904);
-  }
-  
+ 
   .error .card {
     background: rgba(199, 199, 199, 0.664);
     border-radius: 10px;
@@ -187,11 +361,9 @@ body {
     font-size: 25px;
   }
   
-  .card-content img {
-    width: 270px;
-  }
   
-  .card-errors {
+  
+ /* .card-errors {
     display: grid;
     grid-template-columns: 1fr;
     background: rgba(17, 16, 16, 0.425);
@@ -199,7 +371,7 @@ body {
     align-items: center;
   
     border-radius: 10px;
-  }
+  }*/
   
   .datepicker-table td.is-selected {
       background-color: #009dbd;
@@ -244,7 +416,7 @@ body {
   }
   
   .nav-wrapper img {
-    width: 110px;
+    width: 300px;
     margin-top: 8px;
     margin-left: 140px;
   }

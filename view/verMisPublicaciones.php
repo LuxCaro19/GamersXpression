@@ -1,14 +1,16 @@
 <?php
+session_start();
 
 use models\Publicacion as Publicacion;
 use models\Gusta as Gusta;
 
-require_once("../models/MeGusta.php");
 require_once("../models/Publicacion.php");
+require_once("../models/MeGusta.php");
 
-$gusta = new Gusta();
+$id = $_SESSION['user']['id_usuario'];
 $modelo = new Publicacion();
-$publicaciones = $modelo->cargarPublicacionesJoin();
+$gusta = new Gusta();
+$publicaciones = $modelo->cargarPublicacionesWhere($id);
 
 
 
@@ -39,7 +41,7 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
 
 
     <?php
-    session_start();
+
     if (isset($_SESSION['user'])) { ?>
 
 
@@ -54,8 +56,8 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
 
+                    <li><a href="publicaciones.php">Ver Publicaciones</a></li>
                     <li><a href="VideojuegosList.php">Ver Videojuegos</a></li>
-                    <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
                     <li><a><span class="white-text tam">
                                 <<-| Usuario: <?= $_SESSION['user']['nombre'] ?> |->>
@@ -94,7 +96,6 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
 
 
 
-
                             </div>
                         </a>
 
@@ -113,8 +114,6 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
                 </div>
 
                 <?php foreach ($publicaciones as $p) { ?>
-
-
 
                     <div class="card">
 
@@ -147,6 +146,7 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
 
                         <div class="info-likes-comments">
 
+
                             <span>
                                 <!-- este formulario es para poder enviar el id de la publicacion al controlador al momento de dar "me gusta    " -->
                                 <form action="../controllers/ControlMeGusta.php" method="POST">
@@ -160,14 +160,6 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
                                 </form>
 
                             </span>
-
-
-
-
-
-
-
-
                             <span class="margin-left-span">
                                 Comentarios:
 
@@ -189,16 +181,12 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
 
                             </span>
 
+
                             <form action="detallePublicacion.php" method="POST">
 
                                 <button name="id" id="id" value=<?= $p["id_publicacion"] ?>>Ver publicacion</button>
 
                             </form>
-
-
-
-
-
 
                         </div>
 
@@ -207,11 +195,7 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
 
 
 
-
-
                     </div>
-
-
 
                 <?php } ?>
 
