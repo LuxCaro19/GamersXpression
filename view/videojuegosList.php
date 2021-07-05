@@ -113,8 +113,8 @@ $cantidadresultados = $juego->contarBusquedaVideojuegos($palabra);
 
                     <div class="col l3 m4 s6">
                         <div class="card">
-                            <div class="card-image">
-                                <?= '<img src="data:image/jpeg;base64,' . base64_encode($j['imagen']) . '"/>' ?>
+                            <div class="card-image gamebox">
+                                <?= '<img class = "gameimage" src="data:image/jpeg;base64,' . base64_encode($j['imagen']) . '"/>' ?>
 
                                 <span class="card-title"><?= $j["nombre"]  ?></span>
                             </div>
