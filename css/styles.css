@@ -618,3 +618,12 @@ body {
     }
   }
   
+  .gamebox {
+    height: 250px;
+    
+  }
+
+  .gameimage {
+    height: 100%;
+    object-fit: cover;
+  }
