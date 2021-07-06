@@ -21,10 +21,10 @@ $coment = new Comentarios();
 
 
 
-    
-    $count_comment = $model->commentCount($_GET['id']);
-    $comentarios = $coment->cargarComentarios($_GET['id']);
-    $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
+
+$count_comment = $model->commentCount($_GET['id']);
+$comentarios = $coment->cargarComentarios($_GET['id']);
+$publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
 
 
 ?>
@@ -62,9 +62,10 @@ $coment = new Comentarios();
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-                    <li><a href="VideojuegosList.php">Ver Videojuegos</a></li>
+
                     <li><a href="Publicaciones.php">Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
+                    <li><a href="VideojuegosList.php">Ver Videojuegos</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
                     <li><a><span class="white-text tam">
                                 <<-| Usuario: <?= $_SESSION['user']['nombre'] ?> |->>
@@ -87,6 +88,27 @@ $coment = new Comentarios();
                 foreach ($publicacion as $p) { ?>
 
                     <div class="card">
+
+                        <?php
+
+                        if ($p["id_user"] == $_SESSION['user']['id_usuario']) { ?>
+
+
+                            <form action="../controllers/EliminarPublicacion.php" method="POST">
+
+
+
+                                <button class="right deleteButton" name="id_elim" id="id_elim" value=<?= $p["id_publicacion"] ?>>
+                                    <i class="Small material-icons black-text">delete</i>
+
+                                </button>
+
+
+
+
+                            </form>
+
+                        <?php } ?>
 
 
                         <div class="card-content">
@@ -155,7 +177,7 @@ $coment = new Comentarios();
                                     <div class="items-comentar">
 
 
-                                        <div class="input-field">
+                                        <div class="input-field per">
 
                                             <input type="text" name="comentario" id="comentario">
                                             <label for="nombre">Comenta esta publicacion</label>
@@ -167,7 +189,7 @@ $coment = new Comentarios();
 
 
 
-                                            <button class="btn right" name="id" value=<?= $p['id_publicacion'] ?>>Comentar</button>
+                                            <button class="right detailButton details" name="id" value=<?= $p['id_publicacion'] ?>>Comentar</button>
 
 
 

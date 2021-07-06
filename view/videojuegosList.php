@@ -11,7 +11,7 @@ $cantidad = 12;
 $pagina = 0;
 //pregunta si esta definido algun parametro en la busqueda, al principio este no deberia buscar nada
 if (isset($_GET['busqueda'])) {
-    
+
     //pregunta si se encuentra en una pagina, las paginas comienzan desde 0
     if (isset($_GET['pagina'])) {
         //en la variable pagina se guardara la cantidad de objetos que deben saltarse para empezar a mostrar los obbjetos respectivos
@@ -19,9 +19,9 @@ if (isset($_GET['busqueda'])) {
         $pagina = $_GET['pagina'] * $cantidad;
     } else {
         //si se encuentra en la primera pagina, no deberia saltarse ningun objeto al momento de mostrar algo
-        
+
     }
-    
+
     $palabra = $_GET['busqueda'];
 } else {
     //si no hay un parametro definido en la busqueda, no buscara nada y devolvera todos lo videojuegos en la base de datos
@@ -72,8 +72,9 @@ $cantidadresultados = $juego->contarBusquedaVideojuegos($palabra);
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-                    <li><a href="VideojuegosList.php">Ver Videojuegos</a></li>
+                    <li><a href="publicaciones.php">Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
+                    <li class="active"><a>Ver Videojuegos</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
                     <li><a><span class="white-text tam">
                                 <<-| Usuario: <?= $_SESSION['user']['nombre'] ?> |->>
@@ -93,13 +94,24 @@ $cantidadresultados = $juego->contarBusquedaVideojuegos($palabra);
                 <div class="col l12 m12 s12">
                     <div class="card">
                         <form action="" method="get">
-                            <div class="input-field col l8 m8 s12">
-                                <input type="text" name="busqueda">
-                            </div>
-                            <div class="col l4 m4 s12">
-                                <button class="btn waves-effect waves-light" type="submit" name="action">Buscar
-                                <i class="material-icons right">search</i>
-                                </button>
+                            <div class="items-comentar">
+                                <div class="input-field per">
+
+                                    <input type="text" name="busqueda">
+                                    <label for="">Busca un videojuego en especifico</label>
+
+
+                                </div>
+
+                                <div class="input-field back-field-desactived">
+
+                                    <button class="right detailButton details" type="submit" name="action">
+                                        <i class="material-icons center">search</i>
+                                    </button>
+
+                                </div>
+
+
                             </div>
                         </form>
                     </div>
@@ -124,35 +136,35 @@ $cantidadresultados = $juego->contarBusquedaVideojuegos($palabra);
                         </div>
                     </div>
                 <?php } ?>
-                
+
 
                 <!-- Esta es la barra de navegacion de paginas -->
                 <div class="col l12 m12 s12">
-                    
+
                     <ul class="pagination">
 
-                       
+
                         <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
 
                         <!-- Este formulario recupera la informacion de la busqueda y agrega la pagina -->
-                        <?php for ($i = 0; $i <= intdiv($cantidadresultados["0"]["cantidad"], $cantidad)-1 ; $i++) {; ?>    
+                        <?php for ($i = 0; $i <= intdiv($cantidadresultados["0"]["cantidad"], $cantidad) - 1; $i++) {; ?>
                             <li class="active">
-                            
-                            
-                            <form action="videojuegosList.php" method="GET">
 
-                                <input type="hidden" name="busqueda" value="<?=$_GET['busqueda']?>" />
-                                <input type="hidden" name="pagina" value="<?=$i?>" />
-                                <a href="#" onclick="this.parentNode.submit()"><?=$i+1?></a>
 
-                            </form>
-                               
-                            </li>                    
+                                <form action="videojuegosList.php" method="GET">
+
+                                    <input type="hidden" name="busqueda" value="<?= $_GET['busqueda'] ?>" />
+                                    <input type="hidden" name="pagina" value="<?= $i ?>" />
+                                    <a href="#" onclick="this.parentNode.submit()"><?= $i + 1 ?></a>
+
+                                </form>
+
+                            </li>
                         <?php } ?>
-                        
-                        
+
+
                         <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-                        
+
                     </ul>
                 </div>
 
@@ -202,5 +214,8 @@ $cantidadresultados = $juego->contarBusquedaVideojuegos($palabra);
 
 
 </body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </html>

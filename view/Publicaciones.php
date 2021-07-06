@@ -54,8 +54,10 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-                    <li><a href="VideojuegosList.php">Ver Videojuegos</a></li>
+                    
+                    <li class="active"><a>Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
+                    <li><a href="VideojuegosList.php">Ver Videojuegos</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
                     <li><a><span class="white-text tam">
                                 <<-| Usuario: <?= $_SESSION['user']['nombre'] ?> |->>
@@ -118,6 +120,33 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
 
                     <div class="card">
 
+                        <?php
+
+                        if ($p["id_usuario"] == $_SESSION['user']['id_usuario']) { ?>
+
+
+                            <form action="../controllers/EliminarPublicacion.php" method="POST">
+
+
+
+                                <button class="right deleteButton" name="id_elim" id="id_elim" value=<?= $p["id_publicacion"] ?>>
+                                    <i class="Small material-icons black-text">delete</i>
+
+                                </button>
+
+
+
+
+                            </form>
+
+                        <?php } ?>
+
+
+
+
+
+
+
 
                         <div class="card-content">
 
@@ -144,6 +173,12 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
 
 
                         </div>
+
+                        <form action="detallePublicacion.php" method="GET">
+
+                            <button class="right detailButton" name="id" id="id" value=<?= $p["id_publicacion"] ?>>Ver publicacion</button>
+
+                        </form>
 
                         <div class="info-likes-comments">
 
@@ -189,11 +224,7 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
 
                             </span>
 
-                            <form action="detallePublicacion.php" method="GET">
-
-                                <button name="id" id="id" value=<?= $p["id_publicacion"] ?>>Ver publicacion</button>
-
-                            </form>
+                            
 
 
 

@@ -18,6 +18,7 @@ class ControlPublicacion
     public $fecha;
     public $id_game;
     public $id_usuario;
+    public $id_del;
 
 
 
@@ -31,6 +32,7 @@ class ControlPublicacion
         $this->fecha = date('Y-m-d H:i:s');
         $this->id_game = $_POST['juego'];
         $this->id_usuario = $_POST['id_user'];
+        $this->id_del= $_POST['id_delete'];
     }
 
 
@@ -45,7 +47,7 @@ class ControlPublicacion
         if($count==1){
 
             header("Location: ../view/verMisPublicaciones.php");
-
+            
 
         }else{
 
@@ -59,6 +61,8 @@ class ControlPublicacion
 
 
     }
+
+    
 
 }
 

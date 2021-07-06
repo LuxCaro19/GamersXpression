@@ -222,6 +222,46 @@ body {
     padding: 10px;
 
   }
+
+  .right.deleteButton {
+
+    background: #84bebe00;
+    border: 0px;
+    
+
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    cursor:pointer;
+  }
+
+  .right.detailButton {
+    margin-right: 25px;
+    padding: 8px;
+    background: #000da2;
+    color: #fff;
+    border: 0px;
+    border-radius: 4px;
+    cursor:pointer;
+ }
+
+ .right.detailButton:hover {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+  background: rgba(0, 35, 190, 0.904);
+}
+
+ .input-field.per {
+  width: auto;
+ }
+
+ .right.detailButton.details {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 20px;
+  margin-top: 13px;
+}
+
   /*.input-field:hover {
     /*background-color: rgba(206, 206, 206, 0.637);*/
    /* padding: 5px;
@@ -413,6 +453,7 @@ body {
   
   button {
     font-family: "Architects Daughter", cursive;
+    transition-duration: 0.7s;
   }
   
   .nav-wrapper img {
