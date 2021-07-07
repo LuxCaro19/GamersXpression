@@ -1,5 +1,6 @@
 <?php
 
+
 use models\Videojuego as Videojuego;
 
 require_once("../models/Videojuego.php");
@@ -36,9 +37,7 @@ $videojuegos = $modelo->cargarAllVideojuegos();
     <?php
     session_start();
     if (isset($_SESSION['user'])) { ?>
-
-
-
+    
         <nav>
 
             <div class="nav-wrapper indigo darken-4">
@@ -80,12 +79,12 @@ $videojuegos = $modelo->cargarAllVideojuegos();
                                         </div>
 
 
-                                        <select name="juego" id="juego" class="browser-default" >
+                                        <select name="juego" id="juego" class="browser-default">
                                             <option value="" disabled selected hidden>Selecciona un videojuego</option>
                                             <?php foreach ($videojuegos as $v) { ?>
 
 
-                                                <option value=<?= $v["id_juego"] ?> ><?= $v["nombre"] ?></option>
+                                                <option value=<?= $v["id_juego"] ?>><?= $v["nombre"] ?></option>
 
 
 
@@ -95,7 +94,7 @@ $videojuegos = $modelo->cargarAllVideojuegos();
 
                                         <div class="input-image">
                                             <input class="black-text" type="file" name="imagen" id="imagen">
-                                            
+
                                         </div>
 
                                         <div class="input-field">

@@ -83,6 +83,17 @@ class Publicacion{
 
     }
 
+    public function editarPublicacion($titulo, $contenido, $juego, $public){
+
+        $stm = Conexion::conector()->prepare("UPDATE publicacion SET titulo=:titulo ,contenido=:contenido ,id_juego=:juego WHERE id_publicacion =:id_public");
+        $stm->bindParam(":titulo", $titulo);
+        $stm->bindParam(":contenido", $contenido);
+        $stm->bindParam(":juego", $juego);
+        $stm->bindParam(":id_public", $public);
+
+        return $stm->execute();
+
+    }
 
 
     

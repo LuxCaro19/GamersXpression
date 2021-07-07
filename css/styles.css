@@ -236,6 +236,22 @@ body {
     cursor:pointer;
   }
 
+  .right.updateButton{
+
+
+    background: #84bebe00;
+    border: 0px;
+    
+
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    cursor:pointer;
+
+
+  }
+
   .right.detailButton {
     margin-right: 25px;
     padding: 8px;

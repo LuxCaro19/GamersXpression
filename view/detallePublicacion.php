@@ -94,6 +94,18 @@ $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
                         if ($p["id_user"] == $_SESSION['user']['id_usuario']) { ?>
 
 
+                            <form action="updatePublicacion.php" method="GET">
+
+
+                                <button class="right updateButton" name="id_edit" id="id_edit" value=<?= $p["id_publicacion"] ?>>
+                                    <i class="Small material-icons black-text">edit</i>
+
+                                </button>
+
+
+                            </form>
+
+
                             <form action="../controllers/EliminarPublicacion.php" method="POST">
 
 
@@ -106,7 +118,10 @@ $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
 
 
 
+
+
                             </form>
+
 
                         <?php } ?>
 
@@ -232,6 +247,27 @@ $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
                                 <?php foreach ($comentarios as $c) { ?>
 
                                     <div class="card margin">
+
+                                        <?php
+
+                                        if ($c["id_user"] == $_SESSION['user']['id_usuario']) { ?>
+
+
+                                            <form action="../controllers/EliminarComentario.php" method="POST">
+
+
+
+                                                <button class="right deleteButton" name="id_elimComment" id="id_elimComment" value=<?= $c["id_comment"] ?>>
+                                                    <i class="Small material-icons black-text">delete</i>
+
+                                                </button>
+
+
+
+
+                                            </form>
+
+                                        <?php } ?>
 
                                         <div class="card-content parComent">
 
