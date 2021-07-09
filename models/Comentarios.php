@@ -9,7 +9,7 @@ class Comentarios{
 
 
     public function cargarComentarios($id){
-        $stm = Conexion::conector()->prepare("SELECT c.id_comentario 'id_comment', c.comentario, c.fecha,u.id_usuario 'id_user', u.nombre 'usuario' FROM comentario c
+        $stm = Conexion::conector()->prepare("SELECT c.id_comentario 'id_comment', c.comentario, c.fecha,c.id_publicacion 'id_publi',u.id_usuario 'id_user', u.nombre 'usuario' FROM comentario c
                                             inner JOIN usuario u on u.id_usuario=c.id_usuario
                                             where id_publicacion=:id
                                             ORDER BY c.fecha DESC

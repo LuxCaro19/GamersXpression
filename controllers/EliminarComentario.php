@@ -8,15 +8,17 @@ require_once("../models/Comentarios.php");
 
 class EliminarComentario{
 
-    
+    public $id_post;
     public $id_delComment;
-
+    
 
 
     public function __construct()
     {
 
-        $this->id_delComment= $_POST['id_elimComment'];
+        $this->id_post= $_GET['id_post'];
+        $this->id_delComment= $_GET['id_elimComment'];
+        
     }
 
 
@@ -32,7 +34,7 @@ class EliminarComentario{
 
         if($count==1){
 
-            header("Location: ../view/Publicaciones.php");
+            header("Location: ../view/detallePublicacion.php?id=".$this->id_post);
 
         }else{
 

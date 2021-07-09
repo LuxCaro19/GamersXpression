@@ -38,7 +38,7 @@ class EditarPublicacion{
 
         if($count==1){
 
-            header("Location: ../view/Publicaciones.php");
+            header("Location: ../view/detallePublicacion.php?id=".$this->id_publicacion);
 
 
         }else{

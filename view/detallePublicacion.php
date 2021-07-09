@@ -129,7 +129,7 @@ $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
                         <div class="card-content">
 
 
-                            <span class="right">Videojuego: <a href="detalleJuego.php?id_juego=<?=$p["id_juego"] ?>"><?= $p["juego"]  ?></a></span>
+                            <span class="right">Videojuego: <a href="detalleJuego.php?id_juego=<?= $p["id_juego"] ?>"><?= $p["juego"]  ?></a></span>
                             <h4><?= $p["titulo"]  ?></h4>
                             <span>Publicado por: <?= $p["usuario"] ?></span>
                             <span class="right"> <?= $p["fecha"]  ?> </span>
@@ -253,15 +253,15 @@ $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
                                         if ($c["id_user"] == $_SESSION['user']['id_usuario']) { ?>
 
 
-                                            <form action="../controllers/EliminarComentario.php" method="POST">
+                                            <form action="../controllers/EliminarComentario.php" method="GET">
 
 
+                                                <a href="../controllers/EliminarComentario.php?id_post=<?= $c["id_publi"] ?>">
+                                                    <button class="right deleteButton" name="id_elimComment" id="id_elimComment" value=<?= $c["id_comment"] ?>>
+                                                        <i class="Small material-icons black-text">delete</i>
 
-                                                <button class="right deleteButton" name="id_elimComment" id="id_elimComment" value=<?= $c["id_comment"] ?>>
-                                                    <i class="Small material-icons black-text">delete</i>
-
-                                                </button>
-
+                                                    </button>
+                                                </a>
 
 
 

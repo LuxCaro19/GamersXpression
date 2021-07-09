@@ -14,7 +14,6 @@ $publicaciones = $modelo->cargarPublicacionesWhere($id);
 
 
 
-
 ?>
 
 
