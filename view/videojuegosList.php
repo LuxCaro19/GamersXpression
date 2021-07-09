@@ -110,8 +110,6 @@ $cantidadresultados = $juego->contarBusquedaVideojuegos($palabra);
                                     </button>
 
                                 </div>
-
-
                             </div>
                         </form>
                     </div>
@@ -124,16 +122,21 @@ $cantidadresultados = $juego->contarBusquedaVideojuegos($palabra);
 
 
                     <div class="col l3 m4 s6">
-                        <div class="card">
-                            <div class="card-image gamebox">
-                                <?= '<img class = "gameimage" src="data:image/jpeg;base64,' . base64_encode($j['imagen']) . '"/>' ?>
 
-                                <span class="card-title"><?= $j["nombre"]  ?></span>
+                        <a href="detalleJuego.php?id_juego=<?=$j["id_juego"] ?>">
+                            <div class="card">
+                                <div class="card-image gamebox">
+                                    <?= '<img class = "gameimage" src="data:image/jpeg;base64,' . base64_encode($j['imagen']) . '"/>' ?>
+                                </div>
+                                <div class="card-content">
+                                    <p class="truncate center"><?= $j["nombre"]  ?></p>
+
+
+
+                                </div>
                             </div>
-                            <div class="card-content">
-                                <p class="truncate"><?= $j["historia_resumida"]  ?></p>
-                            </div>
-                        </div>
+                        </a>
+
                     </div>
                 <?php } ?>
 

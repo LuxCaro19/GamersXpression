@@ -150,7 +150,7 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
 
                         <div class="card-content">
 
-                            <span class="right">Videojuego: <a href="#"><?= $p["juego"]  ?></a></span>
+                            <span class="right">Videojuego: <a href="detalleJuego.php?id_juego=<?=$p["id_juego"] ?>"><?= $p["juego"]  ?></a></span>
                             <h4><?= $p["titulo"]  ?></h4>
                             <span>Publicado por: <?= $p["usuario"] ?></span>
                             <span class="right"> <?= $p["fecha"]  ?> </span>
