@@ -38,7 +38,7 @@ class Publicacion{
 
     public function cargarPublicacionSeleccionada($id){
 
-        $stm = Conexion::conector()->prepare("SELECT p.id_publicacion, p.titulo, p.contenido, p.fecha, p.me_gusta,u.id_usuario as 'id_user', u.nombre as 
+        $stm = Conexion::conector()->prepare("SELECT p.id_publicacion, p.titulo, p.contenido, p.fecha,p.imagen 'imgPublic',p.me_gusta,u.id_usuario as 'id_user', u.nombre as 
                                                     'usuario', j.nombre 'juego', c.nombre 'compañia', cat.categoria 'categoria' , j.id_juego
                                                     FROM publicacion p
                                                     inner join usuario u on u.id_usuario=p.id_usuario 

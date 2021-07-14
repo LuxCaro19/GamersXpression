@@ -126,6 +126,7 @@ $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
                         <?php } ?>
 
 
+
                         <div class="card-content">
 
 
@@ -168,9 +169,16 @@ $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
 
                         </div>
 
+                        <div class="modify-img">
+                        <?php if ($p['imgPublic'] != null) { ?>
+
+                            <div class="card-image image-tam-public">
+                                <?= '<img class = "" src="data:image/jpeg;base64,' . base64_encode($p['imgPublic']) . '"/>' ?>
+                            </div>
 
 
-
+                        <?php } ?>
+                        </div>
 
                         <div class="card-content">
                             <div class="card-comentar">

@@ -278,6 +278,24 @@ body {
   margin-top: 13px;
 }
 
+.card-image.image-tam-public{
+
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 330px;
+  
+}
+
+.modify-img{
+
+  display: flex;
+  align-items: center;
+  flex-direction:column;
+  border-radius: 0px;
+  
+
+}
+
   /*.input-field:hover {
     /*background-color: rgba(206, 206, 206, 0.637);*/
    /* padding: 5px;
