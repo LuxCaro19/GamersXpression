@@ -12,6 +12,8 @@ class EditarPublicacion{
 
     public $titulo;
     public $contenido;
+    public $imagen;
+    public $tamImagen;
     public $id_game;
     public $id_publicacion;
 
@@ -22,6 +24,8 @@ class EditarPublicacion{
 
         $this->titulo=$_POST['titulo'];
         $this->contenido=$_POST['content'];
+        $this->imagen =fopen($_FILES['imagen']['tmp_name'],'r');
+        $this->tamImagen = $_FILES['imagen']['size'];
         $this->id_game=$_POST['juego'];
         $this->id_publicacion=$_POST['id_public'];
 
@@ -32,9 +36,11 @@ class EditarPublicacion{
     public function editPublicacion(){
         session_start();
 
+        $binaryImg=fread($this->imagen,$this->tamImagen);
         $objeto= new Publicacion();
+        
 
-        $count= $objeto->editarPublicacion($this->titulo, $this->contenido, $this->id_game, $this->id_publicacion);
+        $count= $objeto->editarPublicacion($this->titulo, $this->contenido,$binaryImg, $this->id_game, $this->id_publicacion);
 
         if($count==1){
 

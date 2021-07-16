@@ -14,6 +14,7 @@ class ControlPublicacion
     public $titulo;
     public $contenido;
     public $imagen;
+    public $tamImagen;
     public $megusta;
     public $fecha;
     public $id_game;
@@ -27,7 +28,8 @@ class ControlPublicacion
 
         $this->titulo = $_POST['titulo'];
         $this->contenido = $_POST['content'];
-        $this->imagen = $_POST['imagen'];
+        $this->imagen =fopen($_FILES['imagen']['tmp_name'],'r');
+        $this->tamImagen = $_FILES['imagen']['size'];
         $this->megusta = 0;
         $this->fecha = date('Y-m-d H:i:s');
         $this->id_game = $_POST['juego'];
@@ -39,9 +41,11 @@ class ControlPublicacion
     public function crearPublicacion(){
         session_start();
 
+        $binaryImg=fread($this->imagen,$this->tamImagen);
+        
 
         $objeto = new Publicacion();
-        $count=$objeto->crearPublicacion($this->titulo,$this->contenido,$this->fecha,$this->megusta,$this->id_game,$this->id_usuario);
+        $count=$objeto->crearPublicacion($this->titulo,$this->contenido,$this->fecha,$binaryImg,$this->megusta,$this->id_game,$this->id_usuario);
 
 
         if($count==1){
