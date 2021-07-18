@@ -72,7 +72,7 @@ $publicDetail = $public->cargarPublicacionSeleccionada($_GET['id_edit']);
                             <div class="col l6 m6 s12 offset-l3 offset-m3">
                                 <div class="card">
 
-                                    <form action="../controllers/EditarPublicacion.php" method="POST">
+                                    <form action="../controllers/EditarPublicacion.php" method="POST" enctype="multipart/form-data">
 
                                         <div class="card-content">
 
@@ -81,7 +81,7 @@ $publicDetail = $public->cargarPublicacionSeleccionada($_GET['id_edit']);
 
                                             <div class="input-field">
 
-                                                <input class="black-text" type="text" name="titulo" id="titulo" value="<?=$p['titulo']?>">
+                                                <input class="black-text" type="text" name="titulo" id="titulo" value="<?= $p['titulo'] ?>">
 
                                                 <label for="nombre">Titulo</label>
 
@@ -103,6 +103,7 @@ $publicDetail = $public->cargarPublicacionSeleccionada($_GET['id_edit']);
 
 
                                             <div class="input-image">
+                                                <span class="red-text left">* subir imagen es opcional</span>
                                                 <input class="black-text" type="file" name="imagen" id="imagen">
 
                                             </div>
@@ -110,7 +111,7 @@ $publicDetail = $public->cargarPublicacionSeleccionada($_GET['id_edit']);
                                             <div class="input-field">
 
                                                 <span class="black-text left">¡Expresate, Deja fluir tus argumentos!</span>
-                                                <textarea name="content" id="content" class=" materialize-textarea"><?=$p['contenido']?></textarea>
+                                                <textarea name="content" id="content" class=" materialize-textarea"><?= $p['contenido'] ?></textarea>
 
 
                                             </div>
