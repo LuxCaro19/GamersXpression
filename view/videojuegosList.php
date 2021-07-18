@@ -1,39 +1,3 @@
-<?php
-
-use models\Videojuego as Videojuego;
-
-require_once("../models/Videojuego.php");
-
-$juego = new Videojuego();
-//cantidad es la cantidad de elementos que se mostraran por pagina
-$cantidad = 12;
-//pagina por defecto que deberia mostrarse
-$pagina = 0;
-//pregunta si esta definido algun parametro en la busqueda, al principio este no deberia buscar nada
-if (isset($_GET['busqueda'])) {
-
-    //pregunta si se encuentra en una pagina, las paginas comienzan desde 0
-    if (isset($_GET['pagina'])) {
-        //en la variable pagina se guardara la cantidad de objetos que deben saltarse para empezar a mostrar los obbjetos respectivos
-        //ejemplo, si se encuentra en la pagina 3 y en cada pagina se muestran 10 elementos, deberia saltarse los primeros 20 elementos
-        $pagina = $_GET['pagina'] * $cantidad;
-    } else {
-        //si se encuentra en la primera pagina, no deberia saltarse ningun objeto al momento de mostrar algo
-
-    }
-
-    $palabra = $_GET['busqueda'];
-} else {
-    //si no hay un parametro definido en la busqueda, no buscara nada y devolvera todos lo videojuegos en la base de datos
-    $palabra = "";
-}
-
-$listajuegos = $juego->buscarVideojuegos($palabra, $pagina, $cantidad);
-$cantidadresultados = $juego->contarBusquedaVideojuegos($palabra);
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,89 +51,54 @@ $cantidadresultados = $juego->contarBusquedaVideojuegos($palabra);
 
         <div class="container">
 
-            <div class="row">
-
+            <div class="row" id="busqueda">
+ 
                 <!-- Este es el formulario de busqueda de juego -->
 
                 <div class="col l12 m12 s12">
-                    <div class="card">
-                        <form action="" method="get">
-                            <div class="items-comentar">
-                                <div class="input-field per">
-
-                                    <input type="text" name="busqueda">
-                                    <label for="">Busca un videojuego en especifico</label>
-
-
-                                </div>
-
-                                <div class="input-field back-field-desactived">
-
-                                    <button class="right detailButton details" type="submit" name="action">
-                                        <i class="material-icons center">search</i>
-                                    </button>
-
-                                </div>
+                    <div class="card" >
+                        <div class="items-comentar">
+                            <div class="input-field per">
+                                <input type="text" v-model="busquedadalsa">
+                                <label for="">Busca un videojuego en especifico</label>
                             </div>
-                        </form>
+
+                            <div class="input-field back-field-desactived">
+                                <button class="right detailButton details" type="submit" v-on:click="buscarJuego" name="action">
+                                    <i class="material-icons center">search</i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Aqui se cargan todos los juegos almacenados en listajuegos -->
 
-                <?php foreach ($listajuegos as $j) {; ?>
-
-
-
+                <div v-for="juego in juegos">
                     <div class="col l3 m4 s6">
-
-                        <a href="detalleJuego.php?id_juego=<?=$j["id_juego"] ?>">
+                        <a v-on:click="irAJuego(juego.id_juego)" href="#">
                             <div class="card">
                                 <div class="card-image gamebox">
-                                    <?= '<img class = "gameimage" src="data:image/jpeg;base64,' . base64_encode($j['imagen']) . '"/>' ?>
+                                    <img :src="`data:image/png;base64,${juego.imagen}`" class="gameimage"/>
                                 </div>
                                 <div class="card-content">
-                                    <p class="truncate center"><?= $j["nombre"]  ?></p>
-
-
-
+                                    <p class="truncate center">{{juego.nombre}}</p>
                                 </div>
                             </div>
                         </a>
-
                     </div>
-                <?php } ?>
+                </div>
 
-
-                <!-- Esta es la barra de navegacion de paginas -->
                 <div class="col l12 m12 s12">
 
                     <ul class="pagination">
-
-
-                        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-
-                        <!-- Este formulario recupera la informacion de la busqueda y agrega la pagina -->
-                        <?php for ($i = 0; $i <= intdiv($cantidadresultados["0"]["cantidad"], $cantidad) - 1; $i++) {; ?>
-                            <li class="active">
-
-
-                                <form action="videojuegosList.php" method="GET">
-
-                                    <input type="hidden" name="busqueda" value="<?= $_GET['busqueda'] ?>" />
-                                    <input type="hidden" name="pagina" value="<?= $i ?>" />
-                                    <a href="#" onclick="this.parentNode.submit()"><?= $i + 1 ?></a>
-
-                                </form>
-
-                            </li>
-                        <?php } ?>
-
-
-                        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-
+                        <li class="waves-effect"><a href="#!" v-on:click="paginar(-1)"><i class="material-icons">chevron_left</i></a></li>
+                        <li v-for="item in listapaginas" v-bind:class="item.clase">
+                            <a href="#!"  v-on:click="irApagina(item.pagina)">{{item.pagina+1}}</a>
+                        </li>
+                        <li class="waves-effect"><a href="#!" v-on:click="paginar(+1)"><i class="material-icons">chevron_right</i></a></li>
                     </ul>
-                </div>
+                </div>                   
 
             </div>
 
@@ -218,7 +147,8 @@ $cantidadresultados = $juego->contarBusquedaVideojuegos($palabra);
 
 </body>
 
-
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="../js/listarJuegos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </html>

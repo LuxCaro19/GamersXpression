@@ -26,7 +26,7 @@ class Publicacion{
     }
 
     public function cargarPublicacionesWhere($id){
-        $stm = Conexion::conector()->prepare("SELECT p.id_publicacion, p.titulo, p.contenido, p.fecha, p.me_gusta, u.nombre, as 'usuario', j.nombre 'juego' ,j.id_juego FROM publicacion p
+        $stm = Conexion::conector()->prepare("SELECT p.id_publicacion, p.titulo, p.contenido, p.fecha, p.me_gusta, u.nombre as 'usuario', j.nombre 'juego' ,j.id_juego FROM publicacion p
                                                 inner join usuario u on u.id_usuario=p.id_usuario
                                                 inner join juego j on j.id_juego=p.id_juego
                                                 WHERE p.id_usuario=:id

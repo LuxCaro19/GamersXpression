@@ -1,29 +1,4 @@
-<?php
 
-
-session_start();
-
-use models\Videojuego as Videojuego;
-
-
-require_once("../models/Videojuego.php");
-
-
-$juego = new Videojuego(); 
-//obtiene una lista con los juegos que tengan el id  obtenido
-//guarda el primer elemento del arreglo obtenido (ya que el resultado es 1  o ninguno, se guarda el elemento fuera de la lista)
-$detallesjuego = $juego->cargarDetalleVideojuego($_GET['id_juego'])[0];
-//si existe una secuela, guarda los datos de la secuela
-if (isset( $detallesjuego["id_juego_secuela"])) {$detallesSecuela = $juego->cargarDetalleVideojuego( $detallesjuego["id_juego_secuela"])[0];}
-$star = '';
-for ($i=0; $i < 5; $i++) {
-    if (($detallesjuego["calificacion"]-$i) >= 0.5 && ($detallesjuego["calificacion"]-$i) < 1) { $star = $star.'<i class="fas fa-star-half-alt"></i>';}
-    if (($detallesjuego["calificacion"]-$i) < 0.5) { $star = $star.'<i class="far fa-star"></i>';}
-    if (($detallesjuego["calificacion"]-$i) >= 1) { $star = $star.'<i class="fas fa-star"></i>';}
-}
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +23,7 @@ for ($i=0; $i < 5; $i++) {
 <body>
 
     <?php
+    session_start();
     if (isset($_SESSION['user'])) { ?>
         <nav>
 
@@ -77,48 +53,41 @@ for ($i=0; $i < 5; $i++) {
 
             <div class="row view-publicacion">
 
-                <div class="card">
+                <div class="card" id="detalles">
                     
                     <div class="card-content">
                            
                         <div class="row">
                             <div class="col m4">
                                 <div class="card">
-                                    <div class="card-image ">
-                                        <?= '<img class = "" src="data:image/jpeg;base64,' . base64_encode($detallesjuego['imagen']) . '"/>' ?>
+                                    <div class="card-image" v-if="juegos.imagen">
+                                    <img v-bind:src="'data:image/jpeg;base64,'+juegos.imagen" />
                                     </div>
                                     <div class="card-content">
                                         
-                                        <p>calificacion: <?= $detallesjuego["calificacion"].' '.$star  ?></p>
-                                        <p>categoria : <?= $detallesjuego["categoria"]  ?></p>
-                                        <p>año : no hay ano </p>
-                                        <p>desarrollador : <?= $detallesjuego["cnombre"]  ?></p>
-                                        <p>secuela : <?php if (isset( $detallesjuego["id_juego_secuela"])) {?> <a href="?id_juego=<?=$detallesjuego["id_juego_secuela"]?>"><?php } ?><?php if (isset( $detallesjuego["id_juego_secuela"])) {echo $detallesSecuela["nombre"];} else {echo "no existe secuela";} ?></a></p>
+                                        <p>calificacion: {{juegos.calificacion}}
+                                        <i v-for="i in calificacionjuego"v-bind:class="i"></i>
+                                        <p>categoria : {{juegos.categoria}}</p>
+                                        <p>año : inserta anio en DB </p>
+                                        <p>desarrollador : {{juegos.cnombre}}</p>
+                                        <p v-if="juegos.id_juego_secuela"> <a v-bind:href="'?id_juego='+juegos.id_juego_secuela">{{juegos.nombre_secuela}}</a></p>
 
                                     </div>
                                 </div>
 
                             </div>
                             <div class="col m8">
-                                <h5 class="center"><?= $detallesjuego["nombre"]  ?></h5>
-                                <p><?= $detallesjuego["historia_resumida"]  ?></p>
+                                <h5 class="center">{{juegos.nombre}}</h5>
+                                <p>{{juegos.historia_resumida}}}</p>
 
                                 <h6 class="center"> Califica este juego</h6>
-                                <form action="../controllers/ControlCalificar.php" method="POST">
-                                    <input type="hidden" name="juego" value="<?=$detallesjuego["id_juego"]?>">
-                                    <p class="center">
-                                        <?php for ($i=0; $i < 5; $i++) { 
-                                            if ($detallesjuego["usrcalificacion"] > $i){
-                                                echo '<button  class="waves-effect waves-teal btn-flat" name="calificacion" value="'.($i+1).'" ><i class="fas fa-star"></i></button >';
-                                            } else {
-                                                echo '<button  class="waves-effect waves-teal btn-flat" name="calificacion" value="'.($i+1).'" ><i class="far fa-star"></i></button >';
-                                            }
-
-                                        } ?>
-                                    </p>
-                                </form>
-                                <?php if (isset( $detallesjuego["usrcalificacion"])) {?> <h6 class="center"> tu calificacion <?= $detallesjuego["usrcalificacion"]?></h6><?php } ?>
                                 
+                                <p class="center">
+                                <button  v-for="(i, index) in calificacionusr" v-on:click="calificar(index)" class="waves-effect waves-teal btn-flat"><i v-bind:class="i"></i></button >
+                                </p>
+
+                                    
+                             
                                 
                             </div>
                         </div>
@@ -143,7 +112,8 @@ for ($i=0; $i < 5; $i++) {
 
 
 </body>
-
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="../js/detalleJuego.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
