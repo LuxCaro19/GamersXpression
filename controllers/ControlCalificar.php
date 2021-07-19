@@ -17,7 +17,7 @@ class ControlCalificar
     public function __construct()
     {
 
-        $this->juego = $_POST['juego'];
+        $this->juego = $_POST['id'];
         $this->calificacion = $_POST['calificacion'];
 
     }
@@ -32,20 +32,24 @@ class ControlCalificar
             
             $cambiar=$ca->editarCalificacion($this->calificacion,$count["0"]["id_calificacion"]);
             if ($cambiar) {
-                echo "se cambio";
+                $mensaje = ["msg"=>"calificacion actualizada"];
+                echo json_encode($mensaje); 
             } else {
-                echo "no se cambio";
+                $mensaje = ["msg"=>"calificacion no se ha actualizado"];
+                echo json_encode($mensaje);
             }
 
-            header("Location: ../view/detalleJuego.php?id_juego=".$this->juego);     
+               
         }else{
             $crear=$ca->calificar($this->juego,$this->usuario,$this->calificacion);
             if ($crear) {
-                echo "se califico";
+                $mensaje = ["msg"=>"se ha calificado un videojuego"];
+                echo json_encode($mensaje); 
             } else {
-                echo "no se califico";
+                $mensaje = ["msg"=>"no se ha calificado un videojuego"];
+                echo json_encode($mensaje); 
             }
-            header("Location: ../view/detalleJuego.php?id_juego=".$this->juego);
+            
         }      
     }
 
