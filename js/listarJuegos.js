@@ -57,7 +57,7 @@ new Vue({
         },
         
         irAJuego: async function(id){
-            window.location.href = this.url+'/view/detalleJuego.php?id_juego='+id;
+            window.location.href = this.url+'view/detalleJuego.php?id_juego='+id;
         },
 
         paginar: function(id){
