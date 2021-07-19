@@ -170,14 +170,14 @@ $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
                         </div>
 
                         <div class="modify-img">
-                        <?php if ($p['imgPublic'] != null) { ?>
+                            <?php if ($p['imgPublic'] != null) { ?>
 
-                            <div class="card-image image-tam-public">
-                                <?= '<img class = "" src="data:image/jpeg;base64,' . base64_encode($p['imgPublic']) . '"/>' ?>
-                            </div>
+                                <div class="card-image image-tam-public">
+                                    <?= '<img class = "" src="data:image/jpeg;base64,' . base64_encode($p['imgPublic']) . '"/>' ?>
+                                </div>
 
 
-                        <?php } ?>
+                            <?php } ?>
                         </div>
 
                         <div class="card-content">
@@ -264,12 +264,16 @@ $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
                                             <form action="../controllers/EliminarComentario.php" method="GET">
 
 
-                                                <a href="../controllers/EliminarComentario.php?id_post=<?= $c["id_publi"] ?>">
-                                                    <button class="right deleteButton" name="id_elimComment" id="id_elimComment" value=<?= $c["id_comment"] ?>>
-                                                        <i class="Small material-icons black-text">delete</i>
+                                                <input type="hidden" name="id_post" value="<?= $c['id_publi'] ?>">
 
-                                                    </button>
-                                                </a>
+                                                <button class="right deleteButton" name="id_elimComment" id="id_elimComment" value=<?= $c["id_comment"] ?>>
+                                                    <i class="Small material-icons black-text">delete</i>
+
+                                                </button>
+
+
+
+
 
 
 
