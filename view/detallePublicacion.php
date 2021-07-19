@@ -21,22 +21,10 @@ $coment = new Comentarios();
 
 
 
-if (isset($_SESSION['id_public'])) {
 
-
-
-    $count_comment = $model->commentCount($_SESSION['id_public']);
-    $publicacion = $model->cargarPublicacionSeleccionada($_SESSION['id_public']);
-    $comentarios = $coment->cargarComentarios($_SESSION['id_public']);
-    unset($_SESSION['id_public']);
-
-} else {
-
-    $id_public = $_POST['id'];
-    $count_comment = $model->commentCount($id_public);
-    $comentarios = $coment->cargarComentarios($id_public);
-    $publicacion = $model->cargarPublicacionSeleccionada($id_public);
-}
+$count_comment = $model->commentCount($_GET['id']);
+$comentarios = $coment->cargarComentarios($_GET['id']);
+$publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
 
 
 ?>
@@ -74,9 +62,10 @@ if (isset($_SESSION['id_public'])) {
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-                    <li><a href="VideojuegosList.php">Ver Videojuegos</a></li>
+
                     <li><a href="Publicaciones.php">Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
+                    <li><a href="VideojuegosList.php">Ver Videojuegos</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
                     <li><a><span class="white-text tam">
                                 <<-| Usuario: <?= $_SESSION['user']['nombre'] ?> |->>
@@ -100,11 +89,48 @@ if (isset($_SESSION['id_public'])) {
 
                     <div class="card">
 
+                        <?php
+
+                        if ($p["id_user"] == $_SESSION['user']['id_usuario']) { ?>
+
+
+                            <form action="updatePublicacion.php" method="GET">
+
+
+                                <button class="right updateButton" name="id_edit" id="id_edit" value=<?= $p["id_publicacion"] ?>>
+                                    <i class="Small material-icons black-text">edit</i>
+
+                                </button>
+
+
+                            </form>
+
+
+                            <form action="../controllers/EliminarPublicacion.php" method="POST">
+
+
+
+                                <button class="right deleteButton" name="id_elim" id="id_elim" value=<?= $p["id_publicacion"] ?>>
+                                    <i class="Small material-icons black-text">delete</i>
+
+                                </button>
+
+
+
+
+
+
+                            </form>
+
+
+                        <?php } ?>
+
+
 
                         <div class="card-content">
 
 
-                            <span class="right">Videojuego: <a href="#"><?= $p["juego"]  ?></a></span>
+                            <span class="right">Videojuego: <a href="detalleJuego.php?id_juego=<?= $p["id_juego"] ?>"><?= $p["juego"]  ?></a></span>
                             <h4><?= $p["titulo"]  ?></h4>
                             <span>Publicado por: <?= $p["usuario"] ?></span>
                             <span class="right"> <?= $p["fecha"]  ?> </span>
@@ -143,9 +169,16 @@ if (isset($_SESSION['id_public'])) {
 
                         </div>
 
+                        <div class="modify-img">
+                        <?php if ($p['imgPublic'] != null) { ?>
+
+                            <div class="card-image image-tam-public">
+                                <?= '<img class = "" src="data:image/jpeg;base64,' . base64_encode($p['imgPublic']) . '"/>' ?>
+                            </div>
 
 
-
+                        <?php } ?>
+                        </div>
 
                         <div class="card-content">
                             <div class="card-comentar">
@@ -167,7 +200,7 @@ if (isset($_SESSION['id_public'])) {
                                     <div class="items-comentar">
 
 
-                                        <div class="input-field">
+                                        <div class="input-field per">
 
                                             <input type="text" name="comentario" id="comentario">
                                             <label for="nombre">Comenta esta publicacion</label>
@@ -177,7 +210,9 @@ if (isset($_SESSION['id_public'])) {
 
                                         <div class="input-field back-field-desactived">
 
-                                            <button class="btn right" name="id_public" value=<?= $p['id_publicacion'] ?>>Comentar</button>
+
+
+                                            <button class="right detailButton details" name="id" value=<?= $p['id_publicacion'] ?>>Comentar</button>
 
 
 
@@ -220,6 +255,27 @@ if (isset($_SESSION['id_public'])) {
                                 <?php foreach ($comentarios as $c) { ?>
 
                                     <div class="card margin">
+
+                                        <?php
+
+                                        if ($c["id_user"] == $_SESSION['user']['id_usuario']) { ?>
+
+
+                                            <form action="../controllers/EliminarComentario.php" method="GET">
+
+
+                                                <a href="../controllers/EliminarComentario.php?id_post=<?= $c["id_publi"] ?>">
+                                                    <button class="right deleteButton" name="id_elimComment" id="id_elimComment" value=<?= $c["id_comment"] ?>>
+                                                        <i class="Small material-icons black-text">delete</i>
+
+                                                    </button>
+                                                </a>
+
+
+
+                                            </form>
+
+                                        <?php } ?>
 
                                         <div class="card-content parComent">
 

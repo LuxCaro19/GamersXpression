@@ -14,7 +14,6 @@ $publicaciones = $modelo->cargarPublicacionesWhere($id);
 
 
 
-
 ?>
 
 
@@ -57,6 +56,7 @@ $publicaciones = $modelo->cargarPublicacionesWhere($id);
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
 
                     <li><a href="publicaciones.php">Ver Publicaciones</a></li>
+                    <li class="active"><a>Mis Publicaciones</a></li>
                     <li><a href="VideojuegosList.php">Ver Videojuegos</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
                     <li><a><span class="white-text tam">
@@ -118,9 +118,25 @@ $publicaciones = $modelo->cargarPublicacionesWhere($id);
                     <div class="card">
 
 
+
+                        <form action="../controllers/EliminarPublicacion.php" method="POST">
+
+
+
+                            <button class="right deleteButton" name="id_elim" id="id_elim" value=<?= $p["id_publicacion"] ?>>
+                                <i class="Small material-icons black-text">delete</i>
+
+                            </button>
+
+
+
+
+                        </form>
+
+
                         <div class="card-content">
 
-                            <span class="right">Videojuego: <a href="#"><?= $p["juego"]  ?></a></span>
+                            <span class="right">Videojuego: <a href="detalleJuego.php?id_juego=<?=$p["id_juego"] ?>"><?= $p["juego"]  ?></a></span>
                             <h4><?= $p["titulo"]  ?></h4>
                             <span>Publicado por: <?= $p["usuario"] ?></span>
                             <span class="right"> <?= $p["fecha"]  ?> </span>
@@ -143,6 +159,13 @@ $publicaciones = $modelo->cargarPublicacionesWhere($id);
 
 
                         </div>
+
+                        <form action="detallePublicacion.php" method="GET">
+
+                            <button class="right detailButton" name="id" id="id" value=<?= $p["id_publicacion"] ?>>Ver publicacion</button>
+
+                        </form>
+
 
                         <div class="info-likes-comments">
 
@@ -182,16 +205,9 @@ $publicaciones = $modelo->cargarPublicacionesWhere($id);
                             </span>
 
 
-                            <form action="detallePublicacion.php" method="POST">
 
-                                <button name="id" id="id" value=<?= $p["id_publicacion"] ?>>Ver publicacion</button>
-
-                            </form>
 
                         </div>
-
-
-
 
 
 

@@ -1,5 +1,6 @@
 <?php
 
+
 use models\Videojuego as Videojuego;
 
 require_once("../models/Videojuego.php");
@@ -37,8 +38,6 @@ $videojuegos = $modelo->cargarAllVideojuegos();
     session_start();
     if (isset($_SESSION['user'])) { ?>
 
-
-
         <nav>
 
             <div class="nav-wrapper indigo darken-4">
@@ -65,7 +64,7 @@ $videojuegos = $modelo->cargarAllVideojuegos();
                         <div class="col l6 m6 s12 offset-l3 offset-m3">
                             <div class="card">
 
-                                <form action="../controllers/ContolPublicacion.php" method="POST">
+                                <form action="../controllers/ContolPublicacion.php" method="POST" enctype="multipart/form-data">
 
                                     <div class="card-content">
 
@@ -80,12 +79,12 @@ $videojuegos = $modelo->cargarAllVideojuegos();
                                         </div>
 
 
-                                        <select name="juego" id="juego" class="browser-default" >
+                                        <select name="juego" id="juego" class="browser-default">
                                             <option value="" disabled selected hidden>Selecciona un videojuego</option>
                                             <?php foreach ($videojuegos as $v) { ?>
 
 
-                                                <option value=<?= $v["id_juego"] ?> ><?= $v["nombre"] ?></option>
+                                                <option value=<?= $v["id_juego"] ?>><?= $v["nombre"] ?></option>
 
 
 
@@ -94,9 +93,14 @@ $videojuegos = $modelo->cargarAllVideojuegos();
 
 
                                         <div class="input-image">
+                                            <span class="red-text left">* subir imagen es opcional</span>
                                             <input class="black-text" type="file" name="imagen" id="imagen">
-                                            
+
                                         </div>
+
+
+                                       
+                                        
 
                                         <div class="input-field">
 
