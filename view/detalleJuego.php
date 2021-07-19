@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,9 +33,9 @@
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-                    <li><a href="videojuegosList.php">Ver Videojuegos</a></li>
                     <li><a href="Publicaciones.php">Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
+                    <li><a href="videojuegosList.php">Ver Videojuegos</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
                     <li><a><span class="white-text tam">
                                 <<-| Usuario: <?= $_SESSION['user']['nombre'] ?> |->>
@@ -54,19 +52,19 @@
             <div class="row view-publicacion">
 
                 <div class="card" id="detalles">
-                    
+
                     <div class="card-content">
-                           
+
                         <div class="row">
                             <div class="col m4">
                                 <div class="card">
                                     <div class="card-image" v-if="juegos.imagen">
-                                    <img v-bind:src="'data:image/jpeg;base64,'+juegos.imagen" />
+                                        <img v-bind:src="'data:image/jpeg;base64,'+juegos.imagen" />
                                     </div>
                                     <div class="card-content">
-                                        
+
                                         <p>calificacion: {{juegos.calificacion}}
-                                        <i v-for="i in calificacionjuego"v-bind:class="i"></i>
+                                            <i v-for="i in calificacionjuego" v-bind:class="i"></i>
                                         <p>categoria : {{juegos.categoria}}</p>
                                         <p>año : inserta anio en DB </p>
                                         <p>desarrollador : {{juegos.cnombre}}</p>
@@ -78,22 +76,22 @@
                             </div>
                             <div class="col m8">
                                 <h5 class="center">{{juegos.nombre}}</h5>
-                                <p>{{juegos.historia_resumida}}}</p>
+                                <p>{{juegos.historia_resumida}}</p>
 
                                 <h6 class="center"> Califica este juego</h6>
-                                
+
                                 <p class="center">
-                                <button  v-for="(i, index) in calificacionusr" v-on:click="calificar(index)" class="waves-effect waves-teal btn-flat"><i v-bind:class="i"></i></button >
+                                    <button v-for="(i, index) in calificacionusr" v-on:click="calificar(index)" class="waves-effect waves-teal btn-flat"><i v-bind:class="i"></i></button>
                                 </p>
 
-                                    
-                             
-                                
+
+
+
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
 
 
