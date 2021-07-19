@@ -45,7 +45,7 @@ class ControlListaVideojuego
             
         if ($calusr){
             $calusr = $calusr[0]['calificacion'];
-            $juegos[0]['calificacionusr']= bcdiv($calusr, 1, 1);
+            $juegos[0]['calificacionusr']= $calusr, 1, 1;
         } else {
             $calusr[] = 0;
             $juegos[0]['calificacionusr']=$calusr;
@@ -53,7 +53,7 @@ class ControlListaVideojuego
         
     
         $juegos[0]['imagen']= base64_encode($juegos[0]['imagen']);
-        $juegos[0]['calificacion']= bcdiv($cal, 1, 1);
+        $juegos[0]['calificacion']= $cal, 1, 1;
         
         
         echo json_encode($juegos[0]);
