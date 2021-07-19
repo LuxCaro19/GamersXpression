@@ -17,7 +17,7 @@ class Calificacion{
     }
 
     public function buscarCalificacionJuego($juego){
-        $stm = Conexion::conector()->prepare("SELECT AVG(calificacion) as calificacion FROM calificacion where id_juego = :j");
+        $stm = Conexion::conector()->prepare("SELECT round(AVG(calificacion),1) as calificacion FROM calificacion where id_juego = :j");
         $stm->bindParam(":j",$juego);
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
