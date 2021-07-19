@@ -17,7 +17,7 @@ class ControlListaVideojuego
 
     public function __construct()
     {
-        $this->id = $_POST['id'];
+        $this->id = $_GET['id'];
     }
 
     public function listarVideojuego(){
