@@ -24,8 +24,14 @@ class EditarPublicacion{
 
         $this->titulo=$_POST['titulo'];
         $this->contenido=$_POST['content'];
-        $this->imagen =fopen($_FILES['imagen']['tmp_name'],'r');
-        $this->tamImagen = $_FILES['imagen']['size'];
+
+        if ($_FILES['imagen']['error'] == 0) {
+
+
+            $this->imagen = fopen($_FILES['imagen']['tmp_name'], 'r');
+            $this->tamImagen = $_FILES['imagen']['size'];
+        }
+        
         $this->id_game=$_POST['juego'];
         $this->id_publicacion=$_POST['id_public'];
 
@@ -36,7 +42,15 @@ class EditarPublicacion{
     public function editPublicacion(){
         session_start();
 
-        $binaryImg=fread($this->imagen,$this->tamImagen);
+        if ($this->imagen != null) {
+            $binaryImg = fread($this->imagen, $this->tamImagen);
+        } else {
+
+            $binaryImg = null;
+        }
+
+
+
         $objeto= new Publicacion();
         
 
