@@ -57,7 +57,7 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
                     
                     <li class="active"><a>Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
-                    <li><a href="VideojuegosList.php">Ver Videojuegos</a></li>
+                    <li><a href="videojuegosList.php">Ver Videojuegos</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
                     <li><a><span class="white-text tam">
                                 <<-| Usuario: <?= $_SESSION['user']['nombre'] ?> |->>

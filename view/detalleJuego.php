@@ -35,7 +35,7 @@
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-                    <li><a href="VideojuegosList.php">Ver Videojuegos</a></li>
+                    <li><a href="videojuegosList.php">Ver Videojuegos</a></li>
                     <li><a href="Publicaciones.php">Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
