@@ -75,7 +75,7 @@ new Vue({
 
         },
         irAJuego: async function(id){
-            window.location.href = this.url+'/view/detalleJuego.php?id='+id;
+            window.location.href = this.url+'view/detalleJuego.php?id='+id;
         },
         calificacionAestrellas: function(calificacion){
             star = [];
