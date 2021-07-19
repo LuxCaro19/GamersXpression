@@ -5,7 +5,7 @@ new Vue({
     data:{
         //http://localhost//GamersXpression/
         /*url:'http://localhost/GamersXpression/'*/
-        url:'https://gamerxpression.herokuapp.com/',
+        url:'https://gamersxpression2021.herokuapp.com/',
         
         juegoID: new URLSearchParams(window.location.search).get('id_juego'),
         juegos: [],
