@@ -24,10 +24,13 @@ class ControlCalificar
 
     public function crearCalificacion(){
         session_start();
+        //guarda el usuario logeado en una variable
         $this->usuario = $_SESSION['user']['id_usuario'] ; 
         $ca = new Calificacion();
+        //busca si ya existe una calificacion
         $count=$ca->buscarCalificacion($this->juego,$this->usuario);
 
+        //si existe la calificacion entonces la modifica, si no existe entonces crea una nueva
         if($count){
             
             $cambiar=$ca->editarCalificacion($this->calificacion,$count["0"]["id_calificacion"]);
