@@ -65,7 +65,7 @@ class ControlLogin{
                         break;
                     //si el usuario es un usuario
                     case "3":
-                        header("Location: ../view/publicaciones.php");
+                        header("Location: ../view/Publicaciones.php");
                         break;
                     default:
                         //no se que podria ir aqui, quizas un  error o algo

@@ -55,7 +55,7 @@ $publicDetail = $public->cargarPublicacionSeleccionada($_GET['id_edit']);
 
                     <li><a href="Publicaciones.php">Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
-                    <li><a href="VideojuegosList.php">Ver Videojuegos</a></li>
+                    <li><a href="videojuegosList.php">Ver Videojuegos</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
                     <li><a><span class="white-text tam">
                                 <<-| Usuario: <?= $_SESSION['user']['nombre'] ?> |->>
