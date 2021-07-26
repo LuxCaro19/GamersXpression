@@ -49,7 +49,7 @@ class Usuario{
     }
 
     //busca una porcion de los resultados de los usuarios, de esta manera no se saturan los datos al cargar grandes volumenes de datos
-    public function buscarUsuarios($palabra,$a ,$b,){
+    public function buscarUsuarios($palabra,$a ,$b){
         $stm = Conexion::conector()->prepare("SELECT u.id_usuario, u.nombre, u.correo, u.estado, u.id_tipo_usuario, t.tipo FROM usuario u
                                                 LEFT JOIN tipo_usuario t ON u.id_tipo_usuario = t.id_tipo_usuario
                                                 WHERE u.nombre LIKE '%' :palabra '%' 
