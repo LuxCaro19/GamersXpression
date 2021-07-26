@@ -60,8 +60,7 @@ class ControlLogin{
                         break;
                     //si el usuario es un administrador
                     case "2":
-                        //header("Location: ../view/viewBlock.php");
-                        echo "usted es admin";
+                        header("Location: ../view/usuariosList.php");
                         break;
                     //si el usuario es un usuario
                     case "3":

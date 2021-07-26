@@ -32,7 +32,11 @@
                 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-
+                    <?php if ($_SESSION['user']['id_tipo_usuario']==2){?>
+                    <li><a href="crearJuego.php">Nuevo Juego</a></li>
+                    <li><a href="usuariosList.php">Administrar Usuarios</a></li>
+                    <?php } ?>
+                
                     <li><a href="Publicaciones.php">Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
                     <li><a href="videojuegosList.php">Ver Videojuegos</a></li>
