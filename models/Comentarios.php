@@ -18,6 +18,16 @@ class Comentarios{
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
+    public function cargarComentarioEspecifico($idComentario){
+        $stm = Conexion::conector()->prepare("SELECT c.id_comentario 'id_comment', c.comentario, c.fecha,c.id_publicacion 'id_publi',u.id_usuario 'id_user', u.nombre 'usuario' FROM comentario c
+                                            inner JOIN usuario u on u.id_usuario=c.id_usuario
+                                            where id_comentario=:id
+                                            ORDER BY c.fecha DESC
+                                            ");
+        $stm->bindParam(":id",$idComentario);
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
 
     public function crearComentario($coment, $fecha, $id_p, $id_u){
 

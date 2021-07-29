@@ -3,7 +3,7 @@ namespace models;
 
 require_once("Conexion.php");
 
-class Gusta{
+class MeGusta{
 
     //cuenta la cantidad de likes por publicaciones
     public function Buscar($id_publicacion){

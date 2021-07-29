@@ -3,7 +3,6 @@ new Vue({
     el:'#detalles',
 
     data:{
-        //http://localhost//GamersXpression/
         //url:'http://localhost/GamersXpression/',
         url:'https://gamersxpression2021.herokuapp.com/',
         
