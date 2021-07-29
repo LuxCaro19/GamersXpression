@@ -47,11 +47,11 @@ $videojuegos = $modelo->cargarAllVideojuegos();
                 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <?php if ($_SESSION['user']['id_tipo_usuario']==2){?>
-                    <li><a href="crearJuego.php">Nuevo Juego</a></li>
-                    <li><a href="usuariosList.php">Administrar Usuarios</a></li>
+                    <?php if ($_SESSION['user']['id_tipo_usuario'] == 2) { ?>
+                        <li><a href="crearJuego.php">Nuevo Juego</a></li>
+                        <li><a href="usuariosList.php">Administrar Usuarios</a></li>
                     <?php } ?>
-                
+
                     <li><a href="Publicaciones.php">Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
                     <li><a href="videojuegosList.php">Ver Videojuegos</a></li>
@@ -61,84 +61,108 @@ $videojuegos = $modelo->cargarAllVideojuegos();
                             </span></a></li>
 
                 </ul>
+            </div>
+        </nav>
 
-
-                <div class="container center">
-
-                    <div class="row cardRealizar-publicacion view-publicacion">
-
-                        <div class="col l6 m6 s12 offset-l3 offset-m3">
-                            <div class="card">
-
-                                <form action="../controllers/ContolPublicacion.php" method="POST" enctype="multipart/form-data">
-
-                                    <div class="card-content">
-
-
-                                        <h4 class="center">Realiza tu publicacion</h4>
-
-                                        <div class="input-field">
-
-                                            <input class="black-text" type="text" name="titulo" id="titulo">
-                                            <label for="nombre">Titulo</label>
-
-                                        </div>
-
-
-                                        <select name="juego" id="juego" class="browser-default">
-                                            <option value="" disabled selected hidden>Selecciona un videojuego</option>
-                                            <?php foreach ($videojuegos as $v) { ?>
-
-
-                                                <option value=<?= $v["id_juego"] ?>><?= $v["nombre"] ?></option>
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="../img/bkg.jpg">
+                    </div>
+                    <a href="#user"><img class="circle" src="../img/back-side.jpg"></a>
 
 
 
-                                            <?php } ?>
-                                        </select>
-
-
-                                        <div class="input-image">
-                                            <span class="red-text left">* subir imagen es opcional</span>
-                                            <input class="black-text" type="file" name="imagen" id="imagen">
-
-                                        </div>
+                    <a href="#name"><span class="white-text name"><?= $_SESSION['user']['nombre'] ?></span></a>
 
 
 
+                </div>
+            </li>
+            <li><a href="Publicaciones.php" class="white-text"><i class="material-icons white-text">fiber_new</i>Publicaiones</a></li>
+            <li><a href="verMisPublicaciones.php"><i class="material-icons white-text">account_box</i>Mis Publicaciones</a></li>
+            <li><a href="videojuegosList.php"><i class="material-icons white-text">games</i>Ver Videojuegos</a></li>
+            <li><a href="cerrarSesion.php"><i class="material-icons white-text">power_settings_new</i>Cerrar Sesión</a></li>
+        </ul>
 
 
-                                        <div class="input-field">
+        <div class="container center">
 
-                                            <span class="black-text left">¡Expresate, Deja fluir tus argumentos!</span>
-                                            <textarea name="content" id="content" class=" materialize-textarea"></textarea>
+            <div class="row cardRealizar-publicacion view-publicacion">
 
+                <div class="col l6 m6 s12 offset-l3 offset-m3">
+                    <div class="card">
 
-                                        </div>
+                        <form action="../controllers/ContolPublicacion.php" method="POST" enctype="multipart/form-data">
 
-                                        <div class="input-field center-align back-field-desactived">
-
-                                            <button name="id_user" id="id_user" class="btn-large" value=<?= $_SESSION['user']['id_usuario'] ?>>Publicar</button>
-
+                            <div class="card-content">
 
 
+                                <h4 class="center">Realiza tu publicacion</h4>
 
-                                        </div>
+                                <div class="input-field">
+
+                                    <input class="black-text" type="text" name="titulo" id="titulo">
+                                    <label for="nombre">Titulo</label>
+
+                                </div>
+
+
+                                <select name="juego" id="juego" class="browser-default">
+                                    <option value="" disabled selected hidden>Selecciona un videojuego</option>
+                                    <?php foreach ($videojuegos as $v) { ?>
+
+
+                                        <option value=<?= $v["id_juego"] ?>><?= $v["nombre"] ?></option>
 
 
 
-                                    </div>
+                                    <?php } ?>
+                                </select>
 
-                                </form>
+
+                                <div class="input-image">
+                                    <span class="red-text left">* subir imagen es opcional</span>
+                                    <input class="black-text" type="file" name="imagen" id="imagen">
+
+                                </div>
+
+
+
+
+
+                                <div class="input-field">
+
+                                    <span class="black-text left">¡Expresate, Deja fluir tus argumentos!</span>
+                                    <textarea name="content" id="content" class=" materialize-textarea"></textarea>
+
+
+                                </div>
+
+                                <div class="input-field center-align back-field-desactived">
+
+                                    <button name="id_user" id="id_user" class="btn-large" value=<?= $_SESSION['user']['id_usuario'] ?>>Publicar</button>
+
+
+
+
+                                </div>
+
+
 
                             </div>
 
-
-                        </div>
+                        </form>
 
                     </div>
+
+
                 </div>
+
             </div>
+        </div>
+        </div>
         </nav>
 
 
@@ -185,6 +209,26 @@ $videojuegos = $modelo->cargarAllVideojuegos();
 
 </body>
 
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var elems = document.querySelectorAll('select');
+        var instances = M.Sidenav.init(elems);
+        var instances = M.FormSelect.init(elems);
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
+</script>
 
 </html>

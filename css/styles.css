@@ -1,443 +1,369 @@
 body {
-    background-color: #ECE9E9;;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    font-family: 'Odibee Sans', cursive;
-  }
-  
-  .input-field input:focus + label {
-    color: rgb(0, 0, 0) !important;
-  }
-  /* label underline focus color */
-  .input-field input:focus {
-    border-bottom: 1px solid rgb(0, 0, 0) !important;
-    box-shadow: 0 1px 0 0 rgb(0, 0, 0) !important;
-  }
-
-  .tam{
-
-    font-size: 20px;
-
-  }
-  
-  .view-publicacion .card{
-
-
-    border-radius: 5px;
-
-
-  }
-
-  .contenido{
-
-
-    font-family: 'Roboto', sans-serif;
-    margin-top: 30px;
-
-
-  }
-
-  .card-content img {
-    width: 270px;
-  }
-
-  .cont-createPubl{
-
-    display: grid;
-    grid-template-columns: 0.5fr 1.9fr;
-    padding: 2px;
-
-
-  }
-
-  .icon-panel{
-
-    width: 200px;
-
-  }
-
-  .icon-panel img{
-
-
-    width: 150px;
-
-
-  }
-
-  .box-realizarPubl{
-
-    
-    background-color: #bebdbdcb;
-    height: 50px;
-    margin-top: 30px;
-    margin-right: 50px;
-    border-radius: 80px;
-
-  }
-
-  .box-realizarPubl p{
-
-    margin-left: 50px;
-    padding-top: 7px;
-    font-size: 25px;
-    color: rgb(0, 0, 0);
-    
-
-  }
-
-
-  .info-likes-comments{
-
-    width: 300px;
-    margin-left: 40px;
-    padding-bottom: 15px;
-
-  }
-
-  .info-likes-comments img{
-
-    width: 20px;
-    margin-right: 4px;
-    
-
-  }
-
-  .margin-left-span {
-
-    margin-left: 70px;
-
-  }
-  .login {
-    margin-top: 136px;
-  }
-
-
-  .login .card {
-    background: rgb(225 225 225 / 81%);
-    border-radius: 5px;
-    
-  }
-  
-  .login label {
-    font-size: 16px;
-    color: rgb(0, 0, 0);
-  }
-  
-
-  .card-action {
-    border-radius: 10px;
-  }
-  
-  .login input {
-    font-size: 20px !important;
-    color: rgb(0, 0, 0);
-    font-family: 'Odibee Sans', cursive;
-    border-bottom: 1px solid rgb(0, 0, 0) !important;
-  }
-  
-  .login button:hover {
-    background: rgba(0, 35, 190, 0.904);
-  }
-  
-
-  .cardRealizar-publicacion label{
-
-    font-size: 20px;
-    color: rgb(0, 0, 0);
-
-  }
-
-  .cardRealizar-publicacion input{
-
-    font-size: 20px !important;
-    color: rgb(0, 0, 0);
-    font-family: 'Odibee Sans', cursive;
-    border-bottom: 1px solid rgb(0, 0, 0) !important;
-
-  }
-
-  .cardRealizar-publicacion button:hover {
-    background: rgba(0, 35, 190, 0.904);
-  }
-  
-  select {
-    /*background-color: rgb(236, 236, 236);*/
-    font-size: 20px !important;
-    color: rgb(0, 0, 0);
-    font-family: 'Odibee Sans', cursive;
-    border-bottom: 1px solid black;
-    
-  }
-
-  .input-image input{
-
-    border-bottom: 0px solid rgb(0, 0, 0) !important;
-    width: 100%;
-
-  }
-
-  p.white-text.parrafoIndex {
-    font-size: 20px;
-    
-  }
-
-  .card-comentarios{
-
-
-    background-color: #cdcdcd;
-    padding: 3px;
-
-  }
-
-  .card.margin{
-
-
-    margin: 10px;
-
-  }
-
-  .card-content.parComent p{
-
-    margin-bottom: 5px;
-    font-size: 18px;
-    margin-left: 5px;
-    
-
-  }
-
-  .card-content.parComent span{
-
-    font-size: 13px;
-    font-family: 'Roboto', sans-serif;
-
-  }
-
-
-
-  .items-comentar{
-
-    display: grid;
-    grid-template-columns: 1.7fr 0.3fr;
-    padding: 10px;
-
-  }
-
-  .right.deleteButton {
-
-    background: #84bebe00;
-    border: 0px;
-    
-
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    margin-left: 30px;
-    cursor:pointer;
-  }
-
-  .right.updateButton{
-
-
-    background: #84bebe00;
-    border: 0px;
-    
-
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    cursor:pointer;
-
-
-  }
-
-  .right.detailButton {
-    margin-right: 25px;
-    padding: 8px;
-    background: #000da2;
-    color: #fff;
-    border: 0px;
-    border-radius: 4px;
-    cursor:pointer;
- }
-
- .right.detailButton:hover {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+  background-color: #ece9e9;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  font-family: "Odibee Sans", cursive;
+}
+
+.input-field input:focus + label {
+  color: rgb(0, 0, 0) !important;
+}
+/* label underline focus color */
+.input-field input:focus {
+  border-bottom: 1px solid rgb(0, 0, 0) !important;
+  box-shadow: 0 1px 0 0 rgb(0, 0, 0) !important;
+}
+
+.tam {
+  font-size: 20px;
+}
+
+.gamebox {
+  height: 250px;
+}
+
+.gameimage {
+  height: 100%;
+  object-fit: cover;
+}
+.view-publicacion .card {
+  border-radius: 5px;
+}
+
+.contenido {
+  font-family: "Roboto", sans-serif;
+  margin-top: 30px;
+}
+
+.card-content img {
+  width: 270px;
+}
+
+.cont-createPubl {
+  display: grid;
+  grid-template-columns: 0.5fr 1.9fr;
+  padding: 2px;
+}
+
+.icon-panel {
+  width: 200px;
+}
+
+.icon-panel img {
+  width: 150px;
+}
+
+.box-realizarPubl {
+  background-color: #bebdbdcb;
+  height: 50px;
+  margin-top: 30px;
+  margin-right: 50px;
+  border-radius: 80px;
+}
+
+.box-realizarPubl p {
+  margin-left: 50px;
+  padding-top: 7px;
+  font-size: 25px;
+  color: rgb(0, 0, 0);
+}
+
+.info-likes-comments {
+  width: 300px;
+  margin-left: 40px;
+  padding-bottom: 15px;
+}
+
+.info-likes-comments img {
+  width: 20px;
+  margin-right: 4px;
+}
+
+.margin-left-span {
+  margin-left: 70px;
+}
+.login {
+  margin-top: 136px;
+}
+
+.login .card {
+  background: rgb(225 225 225 / 81%);
+  border-radius: 5px;
+}
+
+.login label {
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+.card-action {
+  border-radius: 10px;
+}
+
+.login input {
+  font-size: 20px !important;
+  color: rgb(0, 0, 0);
+  font-family: "Odibee Sans", cursive;
+  border-bottom: 1px solid rgb(0, 0, 0) !important;
+}
+
+.login button:hover {
   background: rgba(0, 35, 190, 0.904);
 }
 
- .input-field.per {
-  width: auto;
- }
+.cardRealizar-publicacion label {
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+}
 
- .right.detailButton.details {
+.cardRealizar-publicacion input {
+  font-size: 20px !important;
+  color: rgb(0, 0, 0);
+  font-family: "Odibee Sans", cursive;
+  border-bottom: 1px solid rgb(0, 0, 0) !important;
+}
+
+.cardRealizar-publicacion button:hover {
+  background: rgba(0, 35, 190, 0.904);
+}
+
+select {
+  /*background-color: rgb(236, 236, 236);*/
+  font-size: 20px !important;
+  color: rgb(0, 0, 0);
+  font-family: "Odibee Sans", cursive;
+  border-bottom: 1px solid black;
+}
+
+.input-image input {
+  border-bottom: 0px solid rgb(0, 0, 0) !important;
+  width: 100%;
+}
+
+p.white-text.parrafoIndex {
+  font-size: 20px;
+}
+
+.card-comentarios {
+  background-color: #cdcdcd;
+  padding: 3px;
+}
+
+.card.margin {
+  margin: 10px;
+}
+
+.card-content.parComent p {
+  margin-bottom: 5px;
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.card-content.parComent span {
+  font-size: 13px;
+  font-family: "Roboto", sans-serif;
+}
+
+.items-comentar {
+  display: grid;
+  grid-template-columns: 1.7fr 0.3fr;
+  padding: 10px;
+}
+
+.right.deleteButton {
+  background: #84bebe00;
+  border: 0px;
+
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.right.updateButton {
+  background: #84bebe00;
+  border: 0px;
+
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  cursor: pointer;
+}
+
+.right.detailButton {
+  margin-right: 25px;
+  padding: 8px;
+  background: #000da2;
+  color: #fff;
+  border: 0px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.right.detailButton:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  background: rgba(0, 35, 190, 0.904);
+}
+
+.input-field.per {
+  width: auto;
+}
+
+.right.detailButton.details {
   padding-left: 20px;
   padding-right: 20px;
   margin-left: 20px;
   margin-top: 13px;
 }
 
-.card-image.image-tam-public{
-
+.card-image.image-tam-public {
   margin-left: 10px;
   margin-right: 10px;
-  width: 330px;
-  
+  width: 530px;
 }
 
-.modify-img{
-
+.modify-img {
   display: flex;
   align-items: center;
-  flex-direction:column;
+  flex-direction: column;
   border-radius: 0px;
-  
-
 }
 
-  /*.input-field:hover {
+/*.input-field:hover {
     /*background-color: rgba(206, 206, 206, 0.637);*/
-   /* padding: 5px;
+/* padding: 5px;
     border-radius: 10px;
 
 
 
     
   }*/
-  
-  
-  /*.input-field:hover label {
+
+/*.input-field:hover label {
     padding: 10px;
   }*/
-  
-  .back-field:hover {
-    /*background-color: rgba(160, 160, 160, 0.637);*/
-    padding: 5px;
-    border-radius: 10px;
-  }
 
-  
-  
-  .back-field:hover label{
-  
-      padding: 10px;
-  
-  }
-  
-  .back-field-desactived:hover {
-      /*background-color: rgba(160, 160, 160, 0);*/
-      padding: 0px;
-      border-radius: 0px;
-  }
-  
-  .back-field-desactived:hover label {
-  
-    padding: 0px;
-  
-  }
-  
-  .letra-oscura input:focus + label {
-    color: rgb(48, 106, 126) !important;
-  }
-  /* label underline focus color */
-  .letra-oscura input:focus {
-    border-bottom: 1px solid rgb(48, 106, 126) !important;
-    box-shadow: 0 1px 0 0 rgb(48, 106, 126) !important;
-  }
-  
-  .sidenav li > a {
-    color: rgb(218 226 228);
-  }
-  
-  nav ul li.active {
-    background-color: rgb(24, 7, 97);;
-  }
-  
-  .sidenav li.active {
-    background-color: rgb(0 157 189 / 64%);
-  }
-  
-  nav ul li:hover {
-    background-color: rgb(33, 42, 175);
-  }
-  
-  .sidenav li:hover {
-    background-color: rgb(24, 7, 97);
-  }
-  
-  .letra-oscura input {
-    font-size: 20px !important;
-    color: rgb(48, 106, 126);
-    border-bottom: 1px solid rgb(48, 106, 126) !important;
-  
-    font-family: "Architects Daughter", cursive;
-  }
-  
-  .input-field textarea:focus {
-    border-bottom: 1px solid rgb(0, 0, 0) !important;
-    box-shadow: 0 1px 0 0 rgb(0, 0, 0) !important;
-  }
-  
-  .letra-oscura textarea:focus + label {
-    color: rgb(0, 0, 0) !important;
-  }
-  /* label underline focus color */
-  .letra-oscura textarea:focus {
-    border-bottom: 1px solid rgb(0, 0, 0) !important;
-    box-shadow: 0 1px 0 0 rgb(0, 0, 0) !important;
-  }
-  
-  .letra-oscura textarea {
-    font-size: 20px !important;
-    color: rgb(0, 0, 0);
-    border-bottom: 1px solid rgb(0, 0, 0) !important;
-  
-    font-family: "Architects Daughter", cursive;
-  }
-  
-  .letra-oscura label {
-    font-size: 16px;
-    color: rgb(0, 0, 0);
-  }
-  
-  .letra-oscura button:hover {
-    background: rgba(68, 176, 209, 0.904);
-  }
-  
-  .letra-oscura h6 {
-    color: rgb(48, 106, 126);
-  }
-  
- 
-  .error .card {
-    background: rgba(199, 199, 199, 0.664);
-    border-radius: 10px;
-    margin-top: 70px;
-    padding: 30px;
-  }
-  
-  .grey.darken-1 {
-    background-color: #a8a7a7 !important;
-  }
-  
-  .btn {
-    margin-top: 40px;
-    background-color: royalblue;
-  }
-  
-  .card-action img {
-    width: 250px;
-  }
-  
-  .card-content h4 {
-    color: rgb(0, 0, 0);
-    font-size: 25px;
-  }
-  
-  
-  
- /* .card-errors {
+.back-field:hover {
+  /*background-color: rgba(160, 160, 160, 0.637);*/
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.back-field:hover label {
+  padding: 10px;
+}
+
+.back-field-desactived:hover {
+  /*background-color: rgba(160, 160, 160, 0);*/
+  padding: 0px;
+  border-radius: 0px;
+}
+
+.back-field-desactived:hover label {
+  padding: 0px;
+}
+
+.letra-oscura input:focus + label {
+  color: rgb(48, 106, 126) !important;
+}
+/* label underline focus color */
+.letra-oscura input:focus {
+  border-bottom: 1px solid rgb(48, 106, 126) !important;
+  box-shadow: 0 1px 0 0 rgb(48, 106, 126) !important;
+}
+
+.sidenav li > a {
+  color: rgb(218 226 228);
+}
+
+nav ul li.active {
+  background-color: rgb(24, 7, 97);
+}
+
+.sidenav li.active {
+  background-color: rgb(43, 20, 141);
+}
+
+nav ul li:hover {
+  background-color: rgb(33, 42, 175);
+}
+
+.sidenav li:hover {
+  background-color: rgb(30, 9, 126);
+}
+
+.letra-oscura input {
+  font-size: 20px !important;
+  color: rgb(48, 106, 126);
+  border-bottom: 1px solid rgb(48, 106, 126) !important;
+
+  font-family: "Architects Daughter", cursive;
+}
+
+.input-field textarea:focus {
+  border-bottom: 1px solid rgb(0, 0, 0) !important;
+  box-shadow: 0 1px 0 0 rgb(0, 0, 0) !important;
+}
+
+.letra-oscura textarea:focus + label {
+  color: rgb(0, 0, 0) !important;
+}
+/* label underline focus color */
+.letra-oscura textarea:focus {
+  border-bottom: 1px solid rgb(0, 0, 0) !important;
+  box-shadow: 0 1px 0 0 rgb(0, 0, 0) !important;
+}
+
+.letra-oscura textarea {
+  font-size: 20px !important;
+  color: rgb(0, 0, 0);
+  border-bottom: 1px solid rgb(0, 0, 0) !important;
+
+  font-family: "Architects Daughter", cursive;
+}
+
+.letra-oscura label {
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+.letra-oscura button:hover {
+  background: rgba(68, 176, 209, 0.904);
+}
+
+.letra-oscura h6 {
+  color: rgb(48, 106, 126);
+}
+
+.error .card {
+  background: rgba(199, 199, 199, 0.664);
+  border-radius: 10px;
+  margin-top: 70px;
+  padding: 30px;
+}
+
+.grey.darken-1 {
+  background-color: #a8a7a7 !important;
+}
+
+.btn {
+  margin-top: 40px;
+  background-color: royalblue;
+}
+
+.card-action img {
+  width: 250px;
+}
+
+.card-content h4 {
+  color: rgb(0, 0, 0);
+  font-size: 25px;
+}
+
+/* .card-errors {
     display: grid;
     grid-template-columns: 1fr;
     background: rgba(17, 16, 16, 0.425);
@@ -446,259 +372,257 @@ body {
   
     border-radius: 10px;
   }*/
-  
-  .datepicker-table td.is-selected {
-      background-color: #009dbd;
-      color: #fff;
-  }
-  
-  .datepicker-table td:hover {
-      background-color: #009dbd;
-      color: #fff;
-  }
-  
-  .datepicker-cancel:hover, .datepicker-clear:hover, .datepicker-today:hover, .datepicker-done:hover {
-      background-color: #009dbd;
-      color: #fff;
-  }
-  
-  .datepicker-date-display {
-  
-      background-color: #5791a3;
-  
-  }
-  
-  .datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done {
-      color: #009dbd;
-  }
-  
-  
-  .btn-large {
-    margin-top: 30px;
-  
-    border-radius: 6px;
-    background: rgb(29 22 121);
-    border-color: #447c94;
-  }
-  
-  .btn-floating {
-    background: rgba(73, 140, 161, 0.863);
-  }
-  
-  button {
-    font-family: "Architects Daughter", cursive;
-    transition-duration: 0.7s;
-  }
-  
-  .nav-wrapper img {
-    width: 300px;
-    margin-top: 8px;
-    margin-left: 140px;
-  }
-  
-  .card-panel {
-    border-radius: 10px;
-    background: rgba(182, 182, 182, 0.651);
-  }
-  
-  .sidenav {
-    background: rgba(105, 105, 105, 0.836);
-  }
-  
-  .border {
-    border: 1px solid red;
-  }
-  
-  .back {
-    background: rgba(124, 124, 124, 0.616);
-  }
-  
-  tr td p {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 5px;
-  }
-  
-  .collection .collection-item {
-    background-color: rgba(124, 124, 124, 0.616);
-    line-height: 1.5rem;
-    padding: 10px 20px;
-    margin: 0;
-    border-bottom: 1px solid rgb(48, 106, 126);
-    color: rgb(48, 106, 126);
-  }
-  
-  .collection {
-    border: 1px solid rgb(48, 106, 126);
-  }
-  
-  .collection ol li{
-  
-    color: rgb(48, 106, 126);
-    font-size: 18px;
-  }
-  
-  .margin-top-container{
-  
-  
-    margin-top: 80px;
-    margin-left: 30px;
-    margin-right: 70px;
-    margin-bottom: 60px;
-    
-  
-  }
-  
-  .icon-img{
-  
-    width: 28px;
-  }
-  
-  .icon-img:hover{
-  
-  
-    width: 30px;
-  
-  }
-  
-  .button-icon{
-  
-    background: rgba(252, 252, 252, 0);
-    border: 1px solid rgba(255, 255, 255, 0);
-  
-  }
-  
-  .background img{
-  
-  
-    width: 300px;
-    
-  
-  }
-  
-  .sidenav .user-view .name, .sidenav .user-view .email {
-    font-size: 20px;
-  }
-  
-  
-  .btn-small{
-  
-    background-color: #5b95a7;
-  
-  }
-  
-  /*  desactivarlos con 720p  */
-  
+
+.datepicker-table td.is-selected {
+  background-color: #009dbd;
+  color: #fff;
+}
+
+.datepicker-table td:hover {
+  background-color: #009dbd;
+  color: #fff;
+}
+
+.datepicker-cancel:hover,
+.datepicker-clear:hover,
+.datepicker-today:hover,
+.datepicker-done:hover {
+  background-color: #009dbd;
+  color: #fff;
+}
+
+.datepicker-date-display {
+  background-color: #5791a3;
+}
+
+.datepicker-cancel,
+.datepicker-clear,
+.datepicker-today,
+.datepicker-done {
+  color: #009dbd;
+}
+
+.btn-large {
+  margin-top: 30px;
+
+  border-radius: 6px;
+  background: rgb(29 22 121);
+  border-color: #447c94;
+}
+
+.btn-floating {
+  background: rgba(73, 140, 161, 0.863);
+}
+
+button {
+  font-family: "Architects Daughter", cursive;
+  transition-duration: 0.7s;
+}
+
+.nav-wrapper img {
+  width: 300px;
+  margin-top: 8px;
+  margin-left: 140px;
+}
+
+.card-panel {
+  border-radius: 10px;
+  background: rgba(182, 182, 182, 0.651);
+}
+
+.sidenav {
+  background: rgb(5 0 74 / 84%);
+}
+
+.border {
+  border: 1px solid red;
+}
+
+.back {
+  background: rgba(124, 124, 124, 0.616);
+}
+
+tr td p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 5px;
+}
+
+.collection .collection-item {
+  background-color: rgba(124, 124, 124, 0.616);
+  line-height: 1.5rem;
+  padding: 10px 20px;
+  margin: 0;
+  border-bottom: 1px solid rgb(48, 106, 126);
+  color: rgb(48, 106, 126);
+}
+
+.collection {
+  border: 1px solid rgb(48, 106, 126);
+}
+
+.collection ol li {
+  color: rgb(48, 106, 126);
+  font-size: 18px;
+}
+
+.margin-top-container {
+  margin-top: 80px;
+  margin-left: 30px;
+  margin-right: 70px;
+  margin-bottom: 60px;
+}
+
+.icon-img {
+  width: 28px;
+}
+
+.icon-img:hover {
+  width: 30px;
+}
+
+.button-icon {
+  background: rgba(252, 252, 252, 0);
+  border: 1px solid rgba(255, 255, 255, 0);
+}
+
+.background img {
+  width: 300px;
+}
+
+.sidenav .user-view .name,
+.sidenav .user-view .email {
+  font-size: 20px;
+}
+
+.btn-small {
+  background-color: #5b95a7;
+}
+
+/*  desactivarlos con 720p  */
+
+.margen-arriba-77 {
+  margin-top: 77px;
+}
+
+.margin-inputs {
+  margin-top: 20px;
+}
+
+.margin-parrafo p {
+  margin-bottom: 63px;
+  font-size: 18px;
+}
+
+.color-letras-formulario {
+  color: rgb(48, 106, 126);
+}
+
+.selects-adaptados select {
+  background-color: rgb(200 200 200 / 87%);
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #447c94;
+  border-radius: 2px;
+  height: 3rem;
+  font-family: "Architects Daughter", cursive;
+  color: #447c94;
+}
+
+.selects-adaptados option {
+  font-family: "Architects Daughter", cursive;
+}
+
+.margin-top-row {
+  margin-top: 25px;
+}
+
+.margin-top-button {
+  margin-top: 152px;
+}
+
+.font-JetBrains {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.font-JetBrains h6 {
+  color: black;
+}
+
+.foot-information {
+  margin-top: 50px;
+}
+
+.foot-information p {
+  margin: 2px;
+}
+
+.foot-information img {
+  width: 120px;
+}
+
+.margin-informe {
+  margin-bottom: 80px;
+}
+
+@media screen and (max-width: 728px) {
   .margen-arriba-77 {
-    margin-top: 77px;
+    margin-top: 0px;
   }
-  
+
   .margin-inputs {
-    margin-top: 20px;
+    margin-top: 0px;
   }
-  
+
   .margin-parrafo p {
-    margin-bottom: 63px;
-    font-size: 18px;
+    margin-bottom: 0px;
   }
-  
-  .color-letras-formulario {
-    color: rgb(48, 106, 126);
-  }
-  
-  .selects-adaptados select {
-    background-color: rgb(200 200 200 / 87%);
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #447c94;
-    border-radius: 2px;
-    height: 3rem;
-    font-family: "Architects Daughter", cursive;
-    color: #447c94;
-  }
-  
-  .selects-adaptados option {
-    font-family: "Architects Daughter", cursive;
-  }
-  
+
   .margin-top-row {
-    margin-top: 25px;
+    margin-top: 0px;
   }
-  
+
   .margin-top-button {
-    margin-top: 152px;
+    margin-top: 60px;
   }
-  
-  .font-JetBrains{
-    font-family: 'JetBrains Mono', monospace;
-    
+
+  .card-image.image-tam-public {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 330px;
   }
-  
-  .font-JetBrains h6{
-    color: black;
-  }
-  
-  .foot-information{
-  
-  
-    margin-top: 50px;
-    
-    
-  
-  }
-  
-  .foot-information p{
-  
-    margin: 2px;
-  
-  
-  }
-  
-  .foot-information img{
-  
-  
-    width: 120px;
-  
-  }
-  
-  .margin-informe{
-  
-    margin-bottom: 80px;
-  
-  }
-  
-  
-  
-  
-  
-  @media screen and (max-width: 728px) {
-    .margen-arriba-77 {
-      margin-top: 0px;
-    }
-  
-    .margin-inputs {
-      margin-top: 0px;
-    }
-  
-    .margin-parrafo p {
-      margin-bottom: 0px;
-    }
-  
-    .margin-top-row {
-      margin-top: 0px;
-    }
-  
-    .margin-top-button {
-      margin-top: 60px;
-    }
-  }
-  
-  .gamebox {
-    height: 250px;
+
+  .icon-panel {
+    height: 60px;
     
   }
 
-  .gameimage {
-    height: 100%;
-    object-fit: cover;
+  .cont-createPubl {
+    display: grid;
+    grid-template-columns: auto;
   }
+
+  .box-realizarPubl {
+    margin: 20px;
+  }
+
+  .box-realizarPubl p {
+    margin-left: 20px;
+    padding-top: 13px;
+    font-size: 15px;
+  }
+
+  .nav-wrapper img {
+    width: 285px;
+    margin-top: 4px;
+    margin-left: 77px;
+    position: absolute;
+  }
+
+  .icon-panel img {
+    width: 130px;
+  }
+
+
+
+}

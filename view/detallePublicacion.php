@@ -78,6 +78,28 @@ $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
             </div>
         </nav>
 
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="../img/bkg.jpg">
+                    </div>
+                    <a href="#user"><img class="circle" src="../img/back-side.jpg"></a>
+
+
+
+                    <a href="#name"><span class="white-text name"><?= $_SESSION['user']['nombre'] ?></span></a>
+
+
+
+                </div>
+            </li>
+            <li><a href="Publicaciones.php" class="white-text"><i class="material-icons white-text">fiber_new</i>Publicaiones</a></li>
+            <li><a href="verMisPublicaciones.php"><i class="material-icons white-text">account_box</i>Mis Publicaciones</a></li>
+            <li><a href="videojuegosList.php"><i class="material-icons white-text">games</i>Ver Videojuegos</a></li>
+            <li><a href="cerrarSesion.php"><i class="material-icons white-text">power_settings_new</i>Cerrar Sesión</a></li>
+        </ul>
+
 
         <div class="container">
 
@@ -330,7 +352,27 @@ $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
 
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var elems = document.querySelectorAll('select');
+            var instances = M.Sidenav.init(elems);
+            var instances = M.FormSelect.init(elems);
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+        });
+    </script>
 
 
 </html>
