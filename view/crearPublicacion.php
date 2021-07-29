@@ -52,6 +52,9 @@ $videojuegos = $modelo->cargarAllVideojuegos();
                         <li><a href="usuariosList.php">Administrar Usuarios</a></li>
                     <?php } ?>
 
+                    <?php if ($_SESSION['user']['id_tipo_usuario']==1){?>
+                    <li><a href="reporteList.php">Ver Reportes</a></li>
+                    <?php } ?>
                     <li><a href="Publicaciones.php">Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
                     <li><a href="videojuegosList.php">Ver Videojuegos</a></li>
@@ -128,10 +131,6 @@ $videojuegos = $modelo->cargarAllVideojuegos();
 
                                 </div>
 
-
-
-
-
                                 <div class="input-field">
 
                                     <span class="black-text left">¡Expresate, Deja fluir tus argumentos!</span>
@@ -143,9 +142,6 @@ $videojuegos = $modelo->cargarAllVideojuegos();
                                 <div class="input-field center-align back-field-desactived">
 
                                     <button name="id_user" id="id_user" class="btn-large" value=<?= $_SESSION['user']['id_usuario'] ?>>Publicar</button>
-
-
-
 
                                 </div>
 

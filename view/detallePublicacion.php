@@ -1,34 +1,3 @@
-<?php
-
-
-session_start();
-
-use models\Publicacion as Publicacion;
-use models\Comentarios as Comentarios;
-use models\Gusta as Gusta;
-
-require_once("../models/MeGusta.php");
-require_once("../models/Publicacion.php");
-require_once("../models/Comentarios.php");
-
-
-$gusta = new Gusta();
-$model = new Publicacion();
-$coment = new Comentarios();
-
-
-
-
-
-
-
-$count_comment = $model->commentCount($_GET['id']);
-$comentarios = $coment->cargarComentarios($_GET['id']);
-$publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,6 +20,7 @@ $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
 <body>
 
     <?php
+    session_start();
     if (isset($_SESSION['user'])) { ?>
         <nav>
 
@@ -61,9 +31,12 @@ $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
                 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <?php if ($_SESSION['user']['id_tipo_usuario']==2){?>
+                    <?php if ($_SESSION['user']['id_tipo_usuario'] == 2) { ?>
                         <li><a href="crearJuego.php">Nuevo Juego</a></li>
                         <li><a href="usuariosList.php">Administrar Usuarios</a></li>
+                    <?php } ?>
+                    <?php if ($_SESSION['user']['id_tipo_usuario'] == 1) { ?>
+                        <li><a href="reporteList.php">Ver Reportes</a></li>
                     <?php } ?>
                     <li><a href="Publicaciones.php">Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
@@ -101,278 +74,147 @@ $publicacion = $model->cargarPublicacionSeleccionada($_GET['id']);
         </ul>
 
 
-        <div class="container">
+        <div class="container" id="pubDetlles">
 
             <div class="row view-publicacion">
 
-
-
-
-                <?php
-                foreach ($publicacion as $p) { ?>
-
-                    <div class="card">
-
-                        <?php
-
-                        if ($p["id_user"] == $_SESSION['user']['id_usuario']) { ?>
-
-
-                            <form action="updatePublicacion.php" method="GET">
-
-
-                                <button class="right updateButton" name="id_edit" id="id_edit" value=<?= $p["id_publicacion"] ?>>
-                                    <i class="Small material-icons black-text">edit</i>
-
-                                </button>
-
-
-                            </form>
-
-
-                            <form action="../controllers/EliminarPublicacion.php" method="POST">
-
-
-
-                                <button class="right deleteButton" name="id_elim" id="id_elim" value=<?= $p["id_publicacion"] ?>>
-                                    <i class="Small material-icons black-text">delete</i>
-
-                                </button>
-
-
-
-
-
-
-                            </form>
-
-
-                        <?php } ?>
-
-
-
-                        <div class="card-content">
-
-
-                            <span class="right">Videojuego: <a href="detalleJuego.php?id_juego=<?= $p["id_juego"] ?>"><?= $p["juego"]  ?></a></span>
-                            <h4><?= $p["titulo"]  ?></h4>
-                            <span>Publicado por: <?= $p["usuario"] ?></span>
-                            <span class="right"> <?= $p["fecha"]  ?> </span>
-
-
-                            <div class="contenido">
-
-                                <p>
-
-                                    <?= $p["contenido"]  ?>
-
-                                </p>
-
+                <div class="card">
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col m12">
+                                <span class="left btn-flat">Publicado por {{publicacion.usuario}}</span>
+                                <span class="left btn-flat ">fecha: {{publicacion.fecha}} </span>
+                                <span class="left btn-flat">Videojuego: <a v-bind:href="'detalleJuego.php?id_juego='+publicacion.id_juego">{{publicacion.juego}}</a></span>
+                                <a v-if="usrActual==publicacion.id_user" v-on:click="alertDLT(publicacion.id_publicacion)" href="#!" data-tooltip="Borrar Publicacion" data-position="right" class="btn-flat right tooltipped"><i class="material-icons">delete</i></a>
+                                <a v-if="usrActual!=publicacion.id_user" v-on:click="alrtREP(publicacion.id_publicacion)" href="#!" data-tooltip="Reportar Publicacion" data-position="right" class="btn-flat right tooltipped"><i class="material-icons">error</i></a>
+                                <a v-if="usrActual==publicacion.id_user" v-bind:href="'updatePublicacion.php?id_edit='+publicacion.id_publicacion" data-tooltip="Editar Publicacion" data-position="right" class="btn-flat right tooltipped"><i class="material-icons">edit</i></a>
                             </div>
 
-                        </div>
+                            <div class="col m8 s12">
+                                <h3>{{publicacion.titulo}}</h3>
+                                <p>{{publicacion.contenido}}</p>
+                            </div>
+                            <div class="col m4 s12 card-image" v-if="publicacion.imgPublic">
+                                <img class="materialboxed" v-bind:data-caption="publicacion.titulo" v-bind:src="'data:image/jpeg;base64,'+publicacion.imgPublic">
+                            </div>
+                            <div class="col m12 s12">
+                                <hr>
+                                <a href="#!" class="btn-flat" v-on:click="like(publicacion.id_publicacion)"><i v-if="publicacion.youlike==0" class="material-icons">favorite_border</i><i v-else class="material-icons">favorite</i>{{publicacion.likes}}</a>
+                                <a href="#!" class="btn-flat" v-on:click="modoComentar()"><i class="material-icons">comment</i>{{publicacion.coment}}</a>
+                            </div>
+                            <div v-if="comentmode">
+                                <div class="col m12 s12">
+                                    <div class="card-comentarios">
+                                        <div class="card">
+                                            <div class="row">
+                                                <div class=" parComent card-content">
 
-                        <div class="info-likes-comments">
-
-
-                            <span>
-                                <!-- este formulario es para poder enviar el id de la publicacion al controlador al momento de dar "me gusta    " -->
-                                <form action="../controllers/ControlMeGusta.php" method="POST">
-
-                                    <input type="hidden" name="id_publicacion" value="<?= $p["id_publicacion"] ?>" />
-                                    <a href="#" onclick="this.parentNode.submit()">
-                                        <img src="../img/likeIcon.png" alt=""> <?= $gusta->Buscar($p["id_publicacion"])["0"]["total"] ?>
-
-                                    </a>
-
-                                </form>
-                            </span>
-
-
-
-
-                        </div>
-
-                        <div class="modify-img">
-                            <?php if ($p['imgPublic'] != null) { ?>
-
-                                <div class="card-image image-tam-public">
-                                    <?= '<img class = "" src="data:image/jpeg;base64,' . base64_encode($p['imgPublic']) . '"/>' ?>
+                                                    <div class="input-field per col m10">
+                                                        <input type="text" v-model="comentario">
+                                                        <label for="nombre">Comenta esta publicacion</label>
+                                                    </div>
+                                                    <div class="input-field back-field-desactived col m2">
+                                                        <button class="right detailButton" v-on:click="crearComentario">Comentar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                            <div v-for="c in comentariosList" v-if="comentariosList.length>0">
+                                <div class="col m12 s12">
+                                    <div class="card-comentarios">
+                                        <div class="card">
+                                            <div class=" parComent card-content">
+                                                <div class="row">
 
-
-                            <?php } ?>
-                        </div>
-
-                        <div class="card-content">
-                            <div class="card-comentar">
-
-                                <?php
-
-                                if (isset($_SESSION['error'])) { ?>
-
-                                    <h6 class="center red-text text-darken"> <?php echo $_SESSION['error'];  ?></h6>
-
-                                <?php unset($_SESSION['error']);
-                                }
-
-                                ?>
-
-                                <form action="../controllers/ControlComentario.php" method="POST">
-
-
-                                    <div class="items-comentar">
-
-
-                                        <div class="input-field per">
-
-                                            <input type="text" name="comentario" id="comentario">
-                                            <label for="nombre">Comenta esta publicacion</label>
-
+                                                    <div class="col m10 s12">
+                                                        <span>{{c.usuario}}</span>
+                                                        <p>{{c.comentario}}</p>
+                                                    </div>
+                                                    <div class="col m2 s12">
+                                                        <span class="rigth">{{c.fecha}}</span>
+                                                        <a v-if="usrActual==c.id_user" v-on:click="alertDLTCOM(c.id_comment)" href="#!" data-tooltip="Borrar Comentario" data-position="right" class="right btn-flat tooltipped"><i class="material-icons">delete</i></a> <br>
+                                                        <a v-if="usrActual!=c.id_user" v-on:click="alrtREPCOM(c.id_comment)" href="#!" data-tooltip="Reportar Comentario" data-position="right" class="right btn-flat tooltipped"><i class="material-icons">error</i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-
-
-                                        <div class="input-field back-field-desactived">
-
-
-
-                                            <button class="right detailButton details" name="id" value=<?= $p['id_publicacion'] ?>>Comentar</button>
-
-
-
-
-                                        </div>
-
                                     </div>
-
-
-
-
-
-
-                                </form>
-
+                                </div>
+                            </div>
+                            <div v-if="comentariosList.length==0">
+                                <h5 class="center">Aun no hay comentarios, presiona el icono de comentarios para comentar</h5>
                             </div>
 
-                            <span>
-                                Comentarios:
-
-                                <?php
-
-
-
-
-                                foreach ($count_comment as $c) {
-
-                                    echo $c["count"];
-                                }
-
-                                ?>
-
-
-
-
-                            </span>
-
-                            <div class="card-comentarios">
-
-                                <?php foreach ($comentarios as $c) { ?>
-
-                                    <div class="card margin">
-
-                                        <?php
-
-                                        if ($c["id_user"] == $_SESSION['user']['id_usuario']) { ?>
-
-
-                                            <form action="../controllers/EliminarComentario.php" method="GET">
-
-
-                                                <input type="hidden" name="id_post" value="<?= $c['id_publi'] ?>">
-
-                                                <button class="right deleteButton" name="id_elimComment" id="id_elimComment" value=<?= $c["id_comment"] ?>>
-                                                    <i class="Small material-icons black-text">delete</i>
-
-                                                </button>
-
-
-
-
-
-
-
-                                            </form>
-
-                                        <?php } ?>
-
-                                        <div class="card-content parComent">
-
-                                            <span class="right"> <?= $c["fecha"]  ?> </span>
-
-                                            <p><?= $c['usuario'] ?></p>
-
-
-                                            <span><?= $c['comentario'] ?></span>
-
-                                        </div>
-
-
+                            <div id="eliminar" class="modal">
+                                <div class="modal-content">
+                                    <h4>Eliminar Publicacion</h4>
+                                    <p>Esta accion eliminara tu publicacion, ¿REALMENTE ESTAS SEGURO?</p>
+                                    <p> <Button class="btn-large pulse red modal-close" v-on:click="eliminarPub(pubSeleccionada)">SI</Button> <BUtton class="btn-large modal-close">NO</BUtton></p>
+                                </div>
+                            </div>
+                            <div id="reportar" class="modal">
+                                <div class="modal-content">
+                                    <h4>Reportar Publicacion</h4>
+                                    <p>Indicanos cual es el problema con esta publicacion</p>
+                                    <input v-model="descripcion" type="text" placeholder="Describe tu problema aqui">
+                                    <div class="input-field col m12 s12">
+                                        <select v-model="raz">
+                                            <option value="" disabled>Razon de Reporte</option>
+                                            <option v-for="r in razones" v-bind:value="r.id_razon_report">
+                                                {{ r.razon}}
+                                            </option>
+                                        </select>
                                     </div>
-
-                                <?php } ?>
-
+                                    <p> <Button class="btn-large pulse red modal-close" v-on:click="reportarPub(2)">Reportar esto</Button></p>
+                                </div>
+                            </div>
+                            <div id="eliminarC" class="modal">
+                                <div class="modal-content">
+                                    <h4>Eliminar Comentario</h4>
+                                    <p>Esta accion eliminara comentario</p>
+                                    <p> <Button class="btn-large pulse red modal-close" v-on:click="eliminarCom(comSeleccionado)">SI</Button> <BUtton class="btn-large modal-close">NO</BUtton></p>
+                                </div>
+                            </div>
+                            <div id="reportarC" class="modal">
+                                <div class="modal-content">
+                                    <h4>Reportar Comentario</h4>
+                                    <p>Indicanos cual es el problema con este comentario</p>
+                                    <input v-model="descripcion" type="text" placeholder="Describe tu problema aqui">
+                                    <div class="input-field col m12 s12">
+                                        <select v-model="raz">
+                                            <option value="" disabled>Razon de Reporte</option>
+                                            <option v-for="r in razones" v-bind:value="r.id_razon_report">
+                                                {{ r.razon}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <p> <Button class="btn-large pulse red modal-close" v-on:click="reportarPub(1)">Reportar esto</Button></p>
+                                </div>
                             </div>
 
                         </div>
-
-
                     </div>
+                </div>
 
-
-
-                <?php } ?>
-
-
-            </div>
-
-
-        </div>
-
-
-
-    <?php } else { ?>
+            <?php } else { ?>
 
 
 
 
 
-    <?php } ?>
+            <?php } ?>
 
 
 
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            var elems = document.querySelectorAll('select');
-            var instances = M.Sidenav.init(elems);
-            var instances = M.FormSelect.init(elems);
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems);
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.modal');
-            var instances = M.Modal.init(elems);
-        });
-    </script>
-
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="../js/detallePublicacion.js"></script>
 
 </html>

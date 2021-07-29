@@ -8,17 +8,11 @@ require_once("../models/Comentarios.php");
 
 class EliminarComentario{
 
-    public $id_post;
-    public $id_delComment;
+    public $id;
     
-
-
     public function __construct()
     {
-
-        $this->id_post= $_GET['id_post'];
-        $this->id_delComment= $_GET['id_elimComment'];
-        
+        $this->id= $_POST['id'];
     }
 
 
@@ -27,18 +21,18 @@ class EliminarComentario{
 
     public function deleteComentario(){
 
-        session_start();
 
         $objeto = new Comentarios();
-        $count=$objeto->eliminarComentario($this->id_delComment);
+        $count=$objeto->eliminarComentario($this->id);
 
         if($count==1){
-
-            header("Location: ../view/detallePublicacion.php?id=".$this->id_post);
+            $mensaje = ["msg"=>"Se ha eliminado el comentario","ok"=>"si"];
+            echo json_encode($mensaje); 
 
         }else{
 
-            echo "hubo un error";
+            $mensaje = ["msg"=>"no se ha podido eliminar el comentario","ok"=>"no"];
+            echo json_encode($mensaje); 
 
         }
 

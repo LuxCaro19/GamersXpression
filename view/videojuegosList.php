@@ -40,6 +40,9 @@
                     <li><a href="usuariosList.php">Administrar Usuarios</a></li>
                     <?php } ?>
                 
+                    <?php if ($_SESSION['user']['id_tipo_usuario']==1){?>
+                    <li><a href="reporteList.php">Ver Reportes</a></li>
+                    <?php } ?>
                     <li><a href="Publicaciones.php">Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
                     <li class="active"><a>Ver Videojuegos</a></li>
@@ -118,11 +121,11 @@
                 <div class="col l12 m12 s12">
 
                     <ul class="pagination">
-                        <li class="waves-effect"><a href="#!" v-on:click="paginar(-1)"><i class="material-icons">chevron_left</i></a></li>
+                        <li class="waves-effect"><a href="#" v-on:click="paginar(-1)"><i class="material-icons">chevron_left</i></a></li>
                         <li v-for="item in listapaginas" v-bind:class="item.clase">
-                            <a href="#!"  v-on:click="irApagina(item.pagina)">{{item.pagina+1}}</a>
+                            <a href="#"  v-on:click="irApagina(item.pagina)">{{item.pagina+1}}</a>
                         </li>
-                        <li class="waves-effect"><a href="#!" v-on:click="paginar(+1)"><i class="material-icons">chevron_right</i></a></li>
+                        <li class="waves-effect"><a href="#" v-on:click="paginar(+1)"><i class="material-icons">chevron_right</i></a></li>
                     </ul>
                 </div>                   
 
@@ -173,27 +176,11 @@
 
 </body>
 
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="../js/listarJuegos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            var elems = document.querySelectorAll('select');
-            var instances = M.Sidenav.init(elems);
-            var instances = M.FormSelect.init(elems);
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems);
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.modal');
-            var instances = M.Modal.init(elems);
-        });
-    </script>
+    
 
 </html>

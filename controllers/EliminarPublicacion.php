@@ -32,12 +32,12 @@ class EliminarPublicacion{
 
         if($count==1){
 
-            header("Location: ../view/Publicaciones.php");
-
+            $mensaje = ["msg"=>"publicacion eliminada"];
+                echo json_encode($mensaje);
         }else{
 
-            echo "hubo un error";
-
+            $mensaje = ["msg"=>"No se ha podido eliminar la publicacion"];
+            echo json_encode($mensaje);
         }
 
 

@@ -1,21 +1,3 @@
-<?php
-
-use models\Publicacion as Publicacion;
-use models\Gusta as Gusta;
-
-require_once("../models/MeGusta.php");
-require_once("../models/Publicacion.php");
-
-$gusta = new Gusta();
-$modelo = new Publicacion();
-$publicaciones = $modelo->cargarPublicacionesJoin();
-
-
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +39,9 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
                         <li><a href="crearJuego.php">Nuevo Juego</a></li>
                         <li><a href="usuariosList.php">Administrar Usuarios</a></li>
                     <?php } ?>
+                    <?php if ($_SESSION['user']['id_tipo_usuario']==1){?>
+                    <li><a href="reporteList.php">Ver Reportes</a></li>
+                    <?php } ?>
                     <li class="active"><a>Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
                     <li><a href="videojuegosList.php">Ver Videojuegos</a></li>
@@ -92,185 +77,96 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
             <li><a href="cerrarSesion.php"><i class="material-icons white-text">power_settings_new</i>Cerrar Sesión</a></li>
         </ul>
 
-        <div class="container">
+        <div class="container" id="publicaciones">
 
-            <div class="row view-publicacion">
-
-
-
+            <div class="view-publicacion">
                 <div class="card">
-
                     <div class="cont-createPubl">
-
                         <div class="icon-panel">
-
-
                             <img src="../img/Icon.png" alt="">
-
-
                         </div>
-
                         <a href="crearPublicacion.php">
                             <div class="box-realizarPubl">
-
-
                                 <p>¡Expresa tu opinion! Escribe aquí tu opinion y publica</p>
-
-
-
-
-
-
                             </div>
                         </a>
-
-
                     </div>
-
-
-
-
-
-
-
-
-
-
                 </div>
-
-                <?php foreach ($publicaciones as $p) { ?>
-
-
-
-                    <div class="card">
-
-                        <?php
-
-                        if ($p["id_usuario"] == $_SESSION['user']['id_usuario']) { ?>
-
-
-                            <form action="../controllers/EliminarPublicacion.php" method="POST">
+            </div>
+            <div class="card">
+                <div class="row">
+                    <div class="col m11">
+                        <input type="text" v-model="busquedadalsa">
+                    </div>
+                    <div class="col m1">
+                        <a href="#!" class="btn-small right" v-on:click="buscarPublicacion">🔎</a>
+                    </div>
+                </div>
+            </div>
 
 
+            <div v-for="(publicacion, index) in publicaciones">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="row">
 
-                                <button class="right deleteButton" name="id_elim" id="id_elim" value=<?= $p["id_publicacion"] ?>>
-                                    <i class="Small material-icons black-text">delete</i>
-
-                                </button>
-
-
-
-
-                            </form>
-
-                        <?php } ?>
-
-
-
-
-
-
-
-
-                        <div class="card-content">
-
-                            <span class="right">Videojuego: <a href="detalleJuego.php?id_juego=<?= $p["id_juego"] ?>"><?= $p["juego"]  ?></a></span>
-                            <h4><?= $p["titulo"]  ?></h4>
-                            <span>Publicado por: <?= $p["usuario"] ?></span>
-                            <span class="right"> <?= $p["fecha"]  ?> </span>
-
-
-                            <div class="contenido">
-
-                                <p>
-
-                                    <?= $p["contenido"]  ?>
-
-                                </p>
+                            <div class="col m10 s12">
+                                <h4>{{publicacion.titulo}}</h4>
+                                <span>Publicado por {{publicacion.usuario}}</span>
+                                <p>{{publicacion.contenido}}</p>
+                            </div>
+                            <div class="col m2 s12">
+                                <span class="right">fecha: {{publicacion.fecha}}</span>
+                                <span class="right">Videojuego: <a v-bind:href="'detalleJuego.php?id_juego='+publicacion.id_juego">{{publicacion.juego}}</a></span>
+                            </div>
+                            <div class="col m12">
+                                <hr>
+                                <a href="#!" class="btn-flat" v-on:click="like(publicacion.id_publicacion)"><i v-if="publicacion.youlike==0" class="material-icons">favorite_border</i><i v-else class="material-icons">favorite</i>{{publicacion.likes}}</a>
+                                <a class="btn-flat"><i class="material-icons">comment</i>{{publicacion.coment}}</a>
+                                <a v-bind:href="'detallePublicacion.php?id='+publicacion.id_publicacion" class="btn-flat">Ver publicacion</a>
+                                <a v-if="usrActual==publicacion.id_usuario" v-on:click="alertDLT(publicacion.id_publicacion)" href="#!" data-tooltip="Borrar Publicacion" data-position="top" class="btn-flat right tooltipped"><i class="material-icons">delete</i></a>
+                                <a v-if="usrActual!=publicacion.id_usuario" v-on:click="alrtREP(publicacion.id_publicacion)" href="#!" data-tooltip="Reportar Publicacion" data-position="top" class="btn-flat right tooltipped"><i class="material-icons">error</i></a>
+                                <a v-if="usrActual==publicacion.id_usuario" v-bind:href="'updatePublicacion.php?id_edit='+publicacion.id_publicacion" data-tooltip="Editar Publicacion" data-position="top" class="btn-flat right tooltipped"><i class="material-icons">edit</i></a>
 
                             </div>
-
-
-
-
-
-
-
                         </div>
-
-                        <form action="detallePublicacion.php" method="GET">
-
-                            <button class="right detailButton" name="id" id="id" value=<?= $p["id_publicacion"] ?>>Ver publicacion</button>
-
-                        </form>
-
-                        <div class="info-likes-comments">
-
-                            <span>
-                                <!-- este formulario es para poder enviar el id de la publicacion al controlador al momento de dar "me gusta    " -->
-                                <form action="../controllers/ControlMeGusta.php" method="POST">
-
-                                    <input type="hidden" name="id_publicacion" value="<?= $p["id_publicacion"] ?>" />
-                                    <a href="#" onclick="this.parentNode.submit()">
-                                        <img src="../img/likeIcon.png" alt=""> <?= $gusta->Buscar($p["id_publicacion"])["0"]["total"] ?>
-
-                                    </a>
-
-                                </form>
-
-                            </span>
-
-
-
-
-
-
-
-
-                            <span class="margin-left-span">
-                                Comentarios:
-
-                                <?php
-
-                                $idValue = $p["id_publicacion"];
-
-                                $count_comment = $modelo->commentCount($idValue);
-
-                                foreach ($count_comment as $c) {
-
-                                    echo $c["count"];
-                                }
-
-                                ?>
-
-
-
-
-                            </span>
-
-
-
-
-
-
-
-
-                        </div>
-
-
-
-
-
-
-
-
                     </div>
-
-
-
-                <?php } ?>
-
+                </div>
             </div>
+            <div id="eliminar" class="modal">
+                <div class="modal-content">
+                    <h4>Eliminar Publicacion</h4>
+                    <p>Esta accion eliminara tu publivacion, ¿REALMENTE ESTAS SEGURO?</p>
+                    <p> <Button class="btn-large pulse red modal-close" v-on:click="eliminarPub(pubSeleccionada)">SI</Button> <BUtton class="btn-large modal-close">NO</BUtton></p>
+                </div>
+            </div>
+            <div id="reportar" class="modal">
+                <div class="modal-content">
+                    <h4>Reportar Publicacion</h4>
+                    <p>Indicanos cual es el problema con esta publicacion</p>
+                    <input v-model="descripcion" type="text" placeholder="Describe tu problema aqui">
+                    <div class="input-field col m12 s12">
+                        <select v-model="raz">
+                            <option value="" disabled>Razon de Reporte</option>
+                            <option v-for="r in razones" v-bind:value="r.id_razon_report">
+                                {{ r.razon}}
+                            </option>
+                        </select>
+                    </div>
+                    <p> <Button class="btn-large pulse red modal-close" v-on:click="reportarPub(pubSeleccionada)">Reportar esto</Button></p>
+                </div>
+            </div>
+            <div class="col l12 m12 s12">
+                <ul class="pagination">
+                    <li class="waves-effect"><a href="#" v-on:click="paginar(-1)"><i class="material-icons">chevron_left</i></a></li>
+                    <li v-for="item in listapaginas" v-bind:class="item.clase">
+                        <a href="#" v-on:click="irApagina(item.pagina)">{{item.pagina+1}}</a>
+                    </li>
+                    <li class="waves-effect"><a href="#" v-on:click="paginar(+1)"><i class="material-icons">chevron_right</i></a></li>
+                </ul>
+            </div>
+
+        </div>
 
         </div>
 
@@ -313,27 +209,11 @@ $publicaciones = $modelo->cargarPublicacionesJoin();
     <?php } ?>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            var elems = document.querySelectorAll('select');
-            var instances = M.Sidenav.init(elems);
-            var instances = M.FormSelect.init(elems);
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems);
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.modal');
-            var instances = M.Modal.init(elems);
-        });
-    </script>
+    <script src="../js/listarPublicaciones.js"></script>
 
 
 </body>

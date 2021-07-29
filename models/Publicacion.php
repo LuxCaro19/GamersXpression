@@ -18,23 +18,49 @@ class Publicacion
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function cargarPublicacionesJoin()
+    public function cargarPublicacionesJoin($palabra,$a ,$b)
     {
         $stm = Conexion::conector()->prepare("SELECT p.id_publicacion, p.titulo, p.contenido, p.fecha, 
                                                 p.me_gusta, u.id_usuario, u.nombre as 'usuario', j.nombre 'juego', j.id_juego FROM publicacion p inner join usuario 
-                                                u on u.id_usuario=p.id_usuario inner join juego j on j.id_juego=p.id_juego 
-                                                ORDER BY p.fecha DESC ");
+                                                u on u.id_usuario=p.id_usuario inner join juego j on j.id_juego=p.id_juego
+                                                WHERE p.titulo LIKE '%' :palabra '%' 
+                                                ORDER BY p.fecha DESC 
+                                                LIMIT $a, $b");
+        $stm->bindParam(":palabra",$palabra);
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function cargarPublicacionesWhere($id)
+    public function contarPublicacionesJoin($palabra)
     {
-        $stm = Conexion::conector()->prepare("SELECT p.id_publicacion, p.titulo, p.contenido, p.fecha, p.me_gusta, u.nombre as 'usuario', j.nombre 'juego' ,j.id_juego FROM publicacion p
-                                                inner join usuario u on u.id_usuario=p.id_usuario
-                                                inner join juego j on j.id_juego=p.id_juego
+        $stm = Conexion::conector()->prepare("SELECT count(id_publicacion) as cantidad FROM publicacion
+                                                WHERE titulo LIKE '%' :palabra '%' ");
+        $stm->bindParam(":palabra",$palabra);
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function cargarPublicacionesWhere($palabra,$a ,$b,$id)
+    {
+        $stm = Conexion::conector()->prepare("SELECT p.id_publicacion, p.titulo, p.contenido, p.fecha, 
+                                                p.me_gusta, u.id_usuario, u.nombre as 'usuario', j.nombre 'juego', j.id_juego FROM publicacion p inner join usuario 
+                                                u on u.id_usuario=p.id_usuario inner join juego j on j.id_juego=p.id_juego
                                                 WHERE p.id_usuario=:id
-                                                ORDER BY p.fecha DESC ");
+                                                AND p.titulo LIKE '%' :palabra '%' 
+                                                ORDER BY p.fecha DESC 
+                                                LIMIT $a, $b");
+        $stm->bindParam(":palabra",$palabra);
+        $stm->bindParam(":id", $id);
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function contarPublicacionesWhere($palabra,)
+    {
+        $stm = Conexion::conector()->prepare("SELECT count(id_publicacion) as cantidad FROM publicacion
+                                                WHERE id_usuario=:id
+                                                AND titulo LIKE '%' :palabra '%' ");
+        $stm->bindParam(":palabra",$palabra);
         $stm->bindParam(":id", $id);
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
