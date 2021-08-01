@@ -39,8 +39,8 @@
                         <li><a href="crearJuego.php">Nuevo Juego</a></li>
                         <li><a href="usuariosList.php">Administrar Usuarios</a></li>
                     <?php } ?>
-                    <?php if ($_SESSION['user']['id_tipo_usuario']==1){?>
-                    <li><a href="reporteList.php">Ver Reportes</a></li>
+                    <?php if ($_SESSION['user']['id_tipo_usuario'] == 1) { ?>
+                        <li><a href="reporteList.php">Ver Reportes</a></li>
                     <?php } ?>
                     <li class="active"><a>Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
@@ -94,14 +94,19 @@
                 </div>
             </div>
             <div class="card">
-                <div class="row">
-                    <div class="col m11">
+
+                <div class="items-comentar">
+                    <div class="input-field per">
+                        <label for="nombre" class="black-text">¡Busca una publicacion especifica!</label>
                         <input type="text" v-model="busquedadalsa">
                     </div>
-                    <div class="col m1">
-                        <a href="#!" class="btn-small right" v-on:click="buscarPublicacion">🔎</a>
+
+
+                    <div class="input-field back-field-desactived">
+                        <a href="#!" class="right detailButton details" v-on:click="buscarPublicacion"><i class="material-icons center">search</i></a>
                     </div>
                 </div>
+
             </div>
 
 
@@ -112,11 +117,11 @@
 
                             <div class="col m10 s12">
                                 <h4>{{publicacion.titulo}}</h4>
-                                <span>Publicado por {{publicacion.usuario}}</span>
-                                <p>{{publicacion.contenido}}</p>
+                                <span class="black-text">Publicado por {{publicacion.usuario}}</span><br><br>
+                                <p class="margin-botom-style">{{publicacion.contenido}}</p>
                             </div>
                             <div class="col m2 s12">
-                                <span class="right">fecha: {{publicacion.fecha}}</span>
+                                <span class="right">fecha: {{publicacion.fecha}}</span><br>
                                 <span class="right">Videojuego: <a v-bind:href="'detalleJuego.php?id_juego='+publicacion.id_juego">{{publicacion.juego}}</a></span>
                             </div>
                             <div class="col m12">
@@ -144,16 +149,18 @@
                 <div class="modal-content">
                     <h4>Reportar Publicacion</h4>
                     <p>Indicanos cual es el problema con esta publicacion</p>
-                    <input v-model="descripcion" type="text" placeholder="Describe tu problema aqui">
+                    <div class="input-field">
+                        <input v-model="descripcion" type="text" placeholder="Describe tu problema aquí">
+                    </div>
                     <div class="input-field col m12 s12">
                         <select v-model="raz">
-                            <option value="" disabled>Razon de Reporte</option>
+                            <option value="" disabled>Razón de Reporte</option>
                             <option v-for="r in razones" v-bind:value="r.id_razon_report">
                                 {{ r.razon}}
                             </option>
                         </select>
                     </div>
-                    <p> <Button class="btn-large pulse red modal-close" v-on:click="reportarPub(pubSeleccionada)">Reportar esto</Button></p>
+                    <p class="center"> <Button class="btn-large pulse dark modal-close" v-on:click="reportarPub(pubSeleccionada)">Reportar esto</Button></p>
                 </div>
             </div>
             <div class="col l12 m12 s12">
@@ -178,33 +185,11 @@
 
 
 
-        <div class="container center">
+        <?php
 
-            <div class="row error">
+        header("Location: errorScreen.php");
 
-                <div class="col l6 m6 s12 offset-l3 offset-m3">
-
-                    <div class="card">
-
-                        <div class="card-content">
-
-                            <img src="../img/logoOptica.png" alt="">
-
-                            <h2 class="red-text">Te has equivocado de camino amigo</h2>
-                            <h4 class="black-text">no dispones de accesso para estar aquí</h4>
-                            <p>Debes iniciar sesión, vuelve al <a href="../index.php">home</a> e inicia sesión.</p>
-                            <p>Creadores de la pagina: <a href="../creadores.html">creadores</a></p>
-
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
+        ?>
 
     <?php } ?>
 

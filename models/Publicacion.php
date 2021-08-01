@@ -55,7 +55,7 @@ class Publicacion
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function contarPublicacionesWhere($palabra,)
+    public function contarPublicacionesWhere($palabra,$id)
     {
         $stm = Conexion::conector()->prepare("SELECT count(id_publicacion) as cantidad FROM publicacion
                                                 WHERE id_usuario=:id
