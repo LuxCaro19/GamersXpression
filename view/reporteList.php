@@ -22,7 +22,7 @@
 
     <?php
     session_start();
-    if (isset($_SESSION['user'])&&$_SESSION['user']['id_tipo_usuario'] == 1) { ?>
+    if (isset($_SESSION['user']) && $_SESSION['user']['id_tipo_usuario'] == 1) { ?>
 
 
 
@@ -55,6 +55,35 @@
 
             </div>
         </nav>
+
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="../img/bkg.jpg">
+                    </div>
+                    <a href="#user"><img class="circle" src="../img/back-side.jpg"></a>
+
+
+
+                    <a href="#name"><span class="white-text name"><?= $_SESSION['user']['nombre'] ?></span></a>
+
+
+
+                </div>
+            </li>
+
+            <li><a href="Publicaciones.php"><i class="material-icons white-text">fiber_new</i>Publicaiones</a></li>
+            <li><a href="verMisPublicaciones.php"><i class="material-icons white-text">account_box</i>Mis Publicaciones</a></li>
+            <li><a href="videojuegosList.php"><i class="material-icons white-text">games</i>Ver Videojuegos</a></li>
+            <li><a href="cerrarSesion.php"><i class="material-icons white-text">power_settings_new</i>Cerrar Sesión</a></li>
+            <br>
+            <h6 class="white-text center">Moderador</h6>
+            <?php if ($_SESSION['user']['id_tipo_usuario'] == 1) { ?>
+                <li class="active"><a href="reporteList.php"><i class="material-icons white-text">report_problem</i>Ver Reportes</a></li>
+            <?php } ?>
+
+        </ul>
 
         <div class="container">
 
@@ -99,9 +128,9 @@
                                     </table>
                                     <h4 v-else>
                                         <div class="alert-danger">
-                                        No existen comentarios reportados actualmente
+                                            No existen comentarios reportados actualmente
                                         </div>
-                                        
+
                                     </h4>
 
                                 </div>
@@ -131,8 +160,8 @@
                                     <h4 v-else>
                                         <div class="alert-danger">
 
-                                        
-                                        No existen publicaciones reportadas actualmente
+
+                                            No existen publicaciones reportadas actualmente
 
                                         </div>
                                     </h4>
@@ -243,13 +272,13 @@
 
 
 
-        <?php 
-            
-            header("Location: errorScreen.php");
-            
-            ?>
+        <?php
 
-    
+        header("Location: errorScreen.php");
+
+        ?>
+
+
 
     <?php } ?>
 
@@ -265,5 +294,22 @@
 
 <script src="../js/listarReportes.js"></script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var elems = document.querySelectorAll('select');
+        var instances = M.Sidenav.init(elems);
+        var instances = M.FormSelect.init(elems);
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
+</script>
 
 </html>

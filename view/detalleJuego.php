@@ -72,6 +72,18 @@
             <li><a href="verMisPublicaciones.php"><i class="material-icons white-text">account_box</i>Mis Publicaciones</a></li>
             <li><a href="videojuegosList.php"><i class="material-icons white-text">games</i>Ver Videojuegos</a></li>
             <li><a href="cerrarSesion.php"><i class="material-icons white-text">power_settings_new</i>Cerrar Sesión</a></li>
+            <br>
+            
+            <?php if ($_SESSION['user']['id_tipo_usuario'] == 2) { ?>
+                <h6 class="white-text center">Administrador</h6>
+                <li><a href="crearJuego.php"><i class="material-icons white-text">create</i>Nuevo Juego</a></li>
+                <li><a href="usuariosList.php"><i class="material-icons white-text">person</i>Administrar Usuarios</a></li>
+            <?php } ?>
+            
+            <?php if ($_SESSION['user']['id_tipo_usuario'] == 1) { ?>
+                <h6 class="white-text center">Moderador</h6>
+                <li class="active"><a href="reporteList.php"><i class="material-icons white-text">report_problem</i>Ver Reportes</a></li>
+            <?php } ?>
         </ul>
 
         

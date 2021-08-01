@@ -56,9 +56,32 @@ class ControlPublicacion
             $binaryImg = null;
         }
 
-        $objeto = new Publicacion();
-        $count = $objeto->crearPublicacion($this->titulo, $this->contenido, $this->fecha, $binaryImg, $this->megusta, $this->id_game, $this->id_usuario);
+        if($this->titulo==""){
 
+            $_SESSION ['error'] = "Debe ingresar un titulo";
+            header("Location: ../view/crearPublicacion.php");
+
+
+        }else if($this->id_game==""){
+
+            $_SESSION ['error'] = "Debe selecccionar un videojuego";
+            header("Location: ../view/crearPublicacion.php");
+
+        }else if($this->contenido==""){
+
+            $_SESSION ['error'] = "Debe agregar contenido a la publicacion";
+            header("Location: ../view/crearPublicacion.php");
+
+        }else{
+
+
+            $objeto = new Publicacion();
+            $count = $objeto->crearPublicacion($this->titulo, $this->contenido, $this->fecha, $binaryImg, $this->megusta, $this->id_game, $this->id_usuario);
+
+
+        }
+
+        
 
         if ($count == 1) {
 

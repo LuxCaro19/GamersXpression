@@ -7,7 +7,8 @@ use models\Publicacion as Publicacion;
 require_once("../models/Publicacion.php");
 
 
-class EditarPublicacion{
+class EditarPublicacion
+{
 
 
     public $titulo;
@@ -22,8 +23,8 @@ class EditarPublicacion{
     public function __construct()
     {
 
-        $this->titulo=$_POST['titulo'];
-        $this->contenido=$_POST['content'];
+        $this->titulo = $_POST['titulo'];
+        $this->contenido = $_POST['content'];
 
         if ($_FILES['imagen']['error'] == 0) {
 
@@ -31,15 +32,14 @@ class EditarPublicacion{
             $this->imagen = fopen($_FILES['imagen']['tmp_name'], 'r');
             $this->tamImagen = $_FILES['imagen']['size'];
         }
-        
-        $this->id_game=$_POST['juego'];
-        $this->id_publicacion=$_POST['id_public'];
 
-
+        $this->id_game = $_POST['juego'];
+        $this->id_publicacion = $_POST['id_public'];
     }
 
 
-    public function editPublicacion(){
+    public function editPublicacion()
+    {
         session_start();
 
         if ($this->imagen != null) {
@@ -50,26 +50,36 @@ class EditarPublicacion{
         }
 
 
+        if ($this->titulo == "") {
 
-        $objeto= new Publicacion();
-        
+            $_SESSION['error'] = "Debe ingresar un titulo";
+            header("Location: ../view/updatePublicacion.php?id_edit=" . $this->id_publicacion);
+        } else if ($this->id_game == "") {
 
-        $count= $objeto->editarPublicacion($this->titulo, $this->contenido,$binaryImg, $this->id_game, $this->id_publicacion);
+            $_SESSION['error'] = "Debe selecccionar un videojuego";
+            header("Location: ../view/updatePublicacion.php?id_edit=" . $this->id_publicacion);
+        } else if ($this->contenido == "") {
 
-        if($count==1){
+            $_SESSION['error'] = "Debe agregar contenido a la publicacion";
+            header("Location: ../view/updatePublicacion.php?id_edit=" . $this->id_publicacion);
+        } else {
 
-            header("Location: ../view/detallePublicacion.php?id=".$this->id_publicacion);
 
 
-        }else{
+            $objeto = new Publicacion();
 
-            echo "hubo un error";
 
+            $count = $objeto->editarPublicacion($this->titulo, $this->contenido, $binaryImg, $this->id_game, $this->id_publicacion);
         }
 
+        if ($count == 1) {
+
+            header("Location: ../view/detallePublicacion.php?id=" . $this->id_publicacion);
+        } else {
+
+            echo "hubo un error";
+        }
     }
-
-
 }
 
 $obj = new EditarPublicacion();

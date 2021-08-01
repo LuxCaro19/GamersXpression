@@ -22,7 +22,7 @@
 
     <?php
     session_start();
-    if (isset($_SESSION['user'])&&$_SESSION['user']['id_tipo_usuario'] == 2) { ?>
+    if (isset($_SESSION['user']) && $_SESSION['user']['id_tipo_usuario'] == 2) { ?>
 
 
 
@@ -35,16 +35,16 @@
                 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <?php if ($_SESSION['user']['id_tipo_usuario']==2){?>
-                    <li><a href="crearJuego.php">Nuevo Juego</a></li>
-                    <li class="active"><a href="usuariosList.php">Administrar Usuarios</a></li>
+                    <?php if ($_SESSION['user']['id_tipo_usuario'] == 2) { ?>
+                        <li><a href="crearJuego.php">Nuevo Juego</a></li>
+                        <li class="active"><a href="usuariosList.php">Administrar Usuarios</a></li>
                     <?php } ?>
-                
-                    <?php if ($_SESSION['user']['id_tipo_usuario']==1){?>
-                    <li><a href="reporteList.php">Ver Reportes</a></li>
+
+                    <?php if ($_SESSION['user']['id_tipo_usuario'] == 1) { ?>
+                        <li><a href="reporteList.php">Ver Reportes</a></li>
                     <?php } ?>
                     <li><a href="Publicaciones.php">Ver Publicaciones</a></li>
-                    <li class="active"><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
+                    <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
                     <li><a href="videojuegosList.php">Ver Videojuegos</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
                     <li><a><span class="white-text tam">
@@ -56,36 +56,69 @@
             </div>
         </nav>
 
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="../img/bkg.jpg">
+                    </div>
+                    <a href="#user"><img class="circle" src="../img/back-side.jpg"></a>
+
+
+
+                    <a href="#name"><span class="white-text name"><?= $_SESSION['user']['nombre'] ?></span></a>
+
+
+
+                </div>
+            </li>
+
+            <li><a href="Publicaciones.php"><i class="material-icons white-text">fiber_new</i>Publicaiones</a></li>
+            <li><a href="verMisPublicaciones.php"><i class="material-icons white-text">account_box</i>Mis Publicaciones</a></li>
+            <li><a href="videojuegosList.php"><i class="material-icons white-text">games</i>Ver Videojuegos</a></li>
+            <li><a href="cerrarSesion.php"><i class="material-icons white-text">power_settings_new</i>Cerrar Sesión</a></li>
+            <br>
+            <h6 class="white-text center">Administrador</h6>
+            <?php if ($_SESSION['user']['id_tipo_usuario'] == 2) { ?>
+                <li><a href="crearJuego.php"><i class="material-icons white-text">create</i>Nuevo Juego</a></li>
+                <li class="active"><a href="usuariosList.php"><i class="material-icons white-text">person</i>Administrar Usuarios</a></li>
+            <?php } ?>
+
+        </ul>
+
         <div class="container">
 
             <div class="row" id="usuarios">
- 
-               
+
+
                 <div class="col l12 m12 s12">
-                    <div class="card" >
-                        
+                    <div class="card">
+
                         <div class="card-content">
-                        <h3>Gestion de usuarios</h3>
-                             
+                            <h3>Gestion de usuarios</h3>
+
 
                             <div class="row">
-                            
-                            <!-- Este es el formulario de busqueda de udusarios -->
-                                <div class="col m11 s12">
+
+
+                                <!-- Este es el formulario de busqueda de udusarios -->
+
+
+                                <div class="items-comentar">
                                     <div class="input-field per">
-                                        <input type="text" v-model="busquedadalsa">
+                                    <input type="text" v-model="busquedadalsa">
                                         <label for="">Busca un usuario</label>
                                     </div>
-                                </div>
-                                <div class="col m1 s12">
+
+
                                     <div class="input-field back-field-desactived">
-                                        <a class="btn-floating center-text" v-on:click="buscarJuego" >
-                                        <i class="material-icons center">search</i></a>
+                                    <a class="right detailButton details" v-on:click="buscarJuego">
+                                            <i class="material-icons center">search</i></a>
                                     </div>
                                 </div>
-                            
 
-                             <!-- Aqui se cargan todos los usuarios almacenados en listausuarios -->
+
+                                <!-- Aqui se cargan todos los usuarios almacenados en listausuarios -->
 
                                 <div lass="col l12 m12 s12">
                                     <table class="table table-striped table-bordered">
@@ -99,32 +132,34 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="usuario in usuarios" >
+                                            <tr v-for="usuario in usuarios">
                                                 <td>{{usuario.nombre}}</td>
                                                 <td>{{usuario.correo}}</td>
-                                                <td><a class="btn-floating btn-small waves-effect waves-light blue" v-on:click="ejecutarAccion(1,usuario.id_usuario)" ><i class="material-icons">autorenew</i></a>{{usuario.estado}} </td>
+                                                <td><a class="btn-floating btn-small waves-effect waves-light blue" v-on:click="ejecutarAccion(1,usuario.id_usuario)"><i class="material-icons">autorenew</i></a>{{usuario.estado}} </td>
                                                 <td><a class="btn-floating btn-small waves-effect waves-light blue" v-on:click="ejecutarAccion(2,usuario.id_usuario)"><i class="material-icons">autorenew</i></a>{{usuario.tipo}} </td>
                                                 <td>
-                                                <a class="btn-floating btn-small waves-effect waves-light red modal-trigger" href="#eliminar" v-on:click="mostrarmensaje(usuario.id_usuario)"><i class="material-icons">delete_forever</i></a>
+                                                    <a class="btn-floating btn-small waves-effect waves-light red modal-trigger" href="#eliminar" v-on:click="mostrarmensaje(usuario.id_usuario)"><i class="material-icons">delete_forever</i></a>
                                                 </td>
                                             </tr>
                                         </tbody>
-                                    </table> 
+                                    </table>
                                 </div>
                             </div>
-                           
 
-                            
+
+
                         </div>
                     </div>
                 </div>
 
-               
+
                 <div id="eliminar" class="modal">
                     <div class="modal-content">
-                    <h4>ELIMINAR USUARIO</h4>
-                    <p>Esta accion eliminara al usuario incluyendo las publicaciones, comentarios y valoraciones, ¿REALMENTE ESTAS SEGURO?</p>
-                    <p> <Button class="btn-large pulse red modal-close" v-on:click="ejecutarAccion(3,usrSeleccionado)" >SI</Button>            <BUtton class="btn-large modal-close">NO</BUtton></p>
+                        <h4>ELIMINAR USUARIO</h4>
+                        <div class="alert-danger">
+                            Esta accion eliminara al usuario incluyendo las publicaciones, comentarios y valoraciones, ¿REALMENTE ESTAS SEGURO?
+                        </div>
+                        <p> <Button class="btn-large pulse red modal-close" v-on:click="ejecutarAccion(3,usrSeleccionado)">SI</Button> <BUtton class="btn-large modal-close">NO</BUtton></p>
                     </div>
                 </div>
 
@@ -133,11 +168,11 @@
                     <ul class="pagination">
                         <li class="waves-effect"><a href="#!" v-on:click="paginar(-1)"><i class="material-icons">chevron_left</i></a></li>
                         <li v-for="item in listapaginas" v-bind:class="item.clase">
-                            <a href="#!"  v-on:click="irApagina(item.pagina)">{{item.pagina+1}}</a>
+                            <a href="#!" v-on:click="irApagina(item.pagina)">{{item.pagina+1}}</a>
                         </li>
                         <li class="waves-effect"><a href="#!" v-on:click="paginar(+1)"><i class="material-icons">chevron_right</i></a></li>
                     </ul>
-                </div>                   
+                </div>
 
             </div>
 
@@ -150,13 +185,13 @@
 
 
 
-        <?php 
-            
-            header("Location: errorScreen.php");
-            
-            ?>
+        <?php
 
-        
+        header("Location: errorScreen.php");
+
+        ?>
+
+
 
     <?php } ?>
 
@@ -171,6 +206,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <script src="../js/listarUsuarios.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var elems = document.querySelectorAll('select');
+        var instances = M.Sidenav.init(elems);
+        var instances = M.FormSelect.init(elems);
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
+</script>
 
 
 </html>

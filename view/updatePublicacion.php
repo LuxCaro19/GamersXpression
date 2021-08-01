@@ -57,7 +57,7 @@ $publicDetail = $public->cargarPublicacionSeleccionada($_GET['id_edit']);
                         <li><a href="usuariosList.php">Administrar Usuarios</a></li>
                     <?php } ?>
 
-                    <?php if ($_SESSION['user']['id_tipo_usuario']==1){?>
+                    <?php if ($_SESSION['user']['id_tipo_usuario'] == 1) { ?>
                         <li><a href="reporteList.php">Ver Reportes</a></li>
                     <?php } ?>
                     <li><a href="Publicaciones.php">Ver Publicaciones</a></li>
@@ -92,6 +92,18 @@ $publicDetail = $public->cargarPublicacionSeleccionada($_GET['id_edit']);
             <li><a href="verMisPublicaciones.php"><i class="material-icons white-text">account_box</i>Mis Publicaciones</a></li>
             <li><a href="videojuegosList.php"><i class="material-icons white-text">games</i>Ver Videojuegos</a></li>
             <li><a href="cerrarSesion.php"><i class="material-icons white-text">power_settings_new</i>Cerrar Sesión</a></li>
+            <br>
+            
+            <?php if ($_SESSION['user']['id_tipo_usuario'] == 2) { ?>
+                <h6 class="white-text center">Administrador</h6>
+                <li><a href="crearJuego.php"><i class="material-icons white-text">create</i>Nuevo Juego</a></li>
+                <li><a href="usuariosList.php"><i class="material-icons white-text">person</i>Administrar Usuarios</a></li>
+            <?php } ?>
+            
+            <?php if ($_SESSION['user']['id_tipo_usuario'] == 1) { ?>
+                <h6 class="white-text center">Moderador</h6>
+                <li class="active"><a href="reporteList.php"><i class="material-icons white-text">report_problem</i>Ver Reportes</a></li>
+            <?php } ?>
         </ul>
 
         <?php foreach ($publicDetail as $p) { ?>
@@ -109,6 +121,21 @@ $publicDetail = $public->cargarPublicacionSeleccionada($_GET['id_edit']);
 
 
                                     <h4 class="center">Edita tu publicacion</h4>
+
+                                    <?php
+
+                                    if (isset($_SESSION['error'])) { ?>
+                                        <div class="alert-danger">
+
+                                            <h6> <?php echo $_SESSION['error'];  ?></h6>
+
+                                        </div>
+
+                                    <?php unset($_SESSION['error']);
+                                    }
+
+
+                                    ?>
 
                                     <div class="input-field">
 
@@ -184,14 +211,14 @@ $publicDetail = $public->cargarPublicacionSeleccionada($_GET['id_edit']);
 
 
 
-        <?php 
-            
-            header("Location: errorScreen.php");
-            
-            ?>
+        <?php
+
+        header("Location: errorScreen.php");
+
+        ?>
 
 
-        
+
 
     <?php } ?>
 
@@ -200,25 +227,25 @@ $publicDetail = $public->cargarPublicacionSeleccionada($_GET['id_edit']);
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            var elems = document.querySelectorAll('select');
-            var instances = M.Sidenav.init(elems);
-            var instances = M.FormSelect.init(elems);
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems);
-        });
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var elems = document.querySelectorAll('select');
+        var instances = M.Sidenav.init(elems);
+        var instances = M.FormSelect.init(elems);
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems);
+    });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.modal');
-            var instances = M.Modal.init(elems);
-        });
-    </script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
+</script>
 
 </html>

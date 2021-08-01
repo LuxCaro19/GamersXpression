@@ -17,7 +17,7 @@
 
 <body background="img/IndexBack.jpg">
 
-    <div class="container">
+    <div class="container index-container">
 
 
         <div class="row login">
@@ -37,27 +37,27 @@
 
                 <h4 class="white-text">¡Disfruta la web y opina con la comunidad!</h4>
 
-                <div class="col l4">
+                <div class="col l4 center">
                 
-                <i class="medium material-icons white-text">add</i> 
+                <i class="medium material-icons white-text">lightbulb_outline</i> 
                 <p class="white-text center">
                 
-                Aprovecha las virtudes y hazle llamar tu atencion a las grandes compañias, haz oir tus quejas, haz oir tus deseos</p>
+                Aprovecha las virtudes y hazle llamar la atencion a las grandes compañias, haz oir tus quejas, haz oir tus deseos</p>
 
                 </div>
 
                 
-                <div class="col l4">
-                <i class="medium material-icons white-text">add</i> 
+                <div class="col l4 center">
+                <i class="medium material-icons white-text">people</i> 
 
-                <p class="white-text center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quasi hic, omnis voluptates dolores a? Molestias praesentium ipsa accusantium dicta, qui velit eius non at animi, quod reprehenderit. Iusto, rem?</p>
+                <p class="white-text center">Comparte tus opiniones con los demás, forma debates, discuciones y reseñas a videojuegos que te parezcan lo que tu opinas</p>
 
                 </div>
 
     
-                <div class="col l4">
-                <i class="medium material-icons white-text">add</i> 
-                <p class="white-text center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste dolor, veniam at quisquam quibusdam quod facere nobis distinctio sequi quam doloribus illum sint ut nisi optio a? Iusto, eaque nihil!</p>
+                <div class="col l4 center">
+                <i class="medium material-icons white-text">videogame_asset</i> 
+                <p class="white-text center">Consulta historias, y califica videojuegos que estarán disponibles en la web, tambien podrás seleccionarlos para cualquiera de tus publicaciones</p>
 
                 </div>
 

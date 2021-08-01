@@ -36,7 +36,7 @@ $videojuegos = $modelo->cargarAllVideojuegos();
 <body>
     <?php
     session_start();
-    if (isset($_SESSION['user'])&&$_SESSION['user']['id_tipo_usuario'] == 2) { ?>
+    if (isset($_SESSION['user']) && $_SESSION['user']['id_tipo_usuario'] == 2) { ?>
 
         <nav>
 
@@ -47,12 +47,12 @@ $videojuegos = $modelo->cargarAllVideojuegos();
                 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <?php if ($_SESSION['user']['id_tipo_usuario']==2){?>
-                    <li class="active" ><a href="crearJuego.php">Nuevo Juego</a></li>
-                    <li><a href="usuariosList.php">Administrar Usuarios</a></li>
+                    <?php if ($_SESSION['user']['id_tipo_usuario'] == 2) { ?>
+                        <li class="active"><a href="crearJuego.php">Nuevo Juego</a></li>
+                        <li><a href="usuariosList.php">Administrar Usuarios</a></li>
                     <?php } ?>
-                    <?php if ($_SESSION['user']['id_tipo_usuario']==1){?>
-                    <li ><a href="reporteList.php">Ver Reportes</a></li>
+                    <?php if ($_SESSION['user']['id_tipo_usuario'] == 1) { ?>
+                        <li><a href="reporteList.php">Ver Reportes</a></li>
                     <?php } ?>
                     <li><a href="Publicaciones.php">Ver Publicaciones</a></li>
                     <li><a href="verMisPublicaciones.php">Mis Publicaciones</a></li>
@@ -64,75 +64,105 @@ $videojuegos = $modelo->cargarAllVideojuegos();
 
                 </ul>
 
+        </nav>
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="../img/bkg.jpg">
+                    </div>
+                    <a href="#user"><img class="circle" src="../img/back-side.jpg"></a>
 
-                <div class="container center " id="formulario">
 
-                    <div class="row">
-                        <div class="col m8 s12 offset-m2">
-                            <div class="card">
 
-                                <div class="card-content">
-                                    <div class="row">
+                    <a href="#name"><span class="white-text name"><?= $_SESSION['user']['nombre'] ?></span></a>
 
-                                        <h4 class="center">Crea un juego</h4>
-                                        <div class="input-field col m12 s12">
-                                            <input id="nombre" v-model="nombre" type="text" class="validate">
-                                            <label for="nombre">Titulo Juego</label>
-                                        </div>
 
-                                        <div class="input-field col m12 s12">
-                                            <textarea v-model="resumen" id="resumen" class="materialize-textarea"></textarea>
-                                            <label for="resumen">Historia resumida</label>
-                                        </div>
 
-                                        <div class="input-field col m6 s12">
-                                            <select v-model="com">
-                                                <option value="" disabled>Desarrolladora</option>
-                                                <option v-for="c in compania" v-bind:value="c.id_compania">
-                                                    {{ c.nombre }}
-                                                </option>
-                                            </select>
-                                        </div>
+                </div>
+            </li>
+           
+            <li><a href="Publicaciones.php"><i class="material-icons white-text">fiber_new</i>Publicaiones</a></li>
+            <li><a href="verMisPublicaciones.php"><i class="material-icons white-text">account_box</i>Mis Publicaciones</a></li>
+            <li><a href="videojuegosList.php"><i class="material-icons white-text">games</i>Ver Videojuegos</a></li>
+            <li><a href="cerrarSesion.php"><i class="material-icons white-text">power_settings_new</i>Cerrar Sesión</a></li>
+            <br>
+            <h6 class="white-text center">Administrador</h6>
+            <?php if ($_SESSION['user']['id_tipo_usuario'] == 2) { ?>
+                <li class="active"><a href="crearJuego.php"><i class="material-icons white-text">create</i>Nuevo Juego</a></li>
+                <li><a href="usuariosList.php"><i class="material-icons white-text">person</i>Administrar Usuarios</a></li>
+            <?php } ?>
 
-                                        <div class="input-field col m6 s12">
-                                            <select v-model="gen">
-                                                <option value="" disabled>Categoria</option>
-                                                <option v-for="g in genero" v-bind:value="g.id_categoria">
-                                                    {{ g.categoria}}
-                                                </option>
-                                            </select>
-                                        </div>
+        </ul>
+        <div class="container center " id="formulario">
 
-                                        <div class="input-field col m12 s12">
-                                            <select v-model="sec">
-                                                <option value="" disabled>Juego secuela</option>
-                                                <option v-for="s in secuela" v-bind:value="s.id_juego">
-                                                    {{ s.nombre}}
-                                                </option>
-                                            </select>
-                                        </div>
+            <div class="row">
+                <div class="col m8 s12 offset-m2">
+                    <div class="card">
 
-                                        <div class="input-field file-field col m12">
-                                            <div class="btn-floating" >
-                                                <span><i class="material-icons">image</i></span>
-                                                <input type="file" @change="processFile($event)"accept="image/png, image/gif, image/jpeg" >
-                                            </div>
-                                            <div class="file-path-wrapper">
-                                                <input class="file-path" disabled type="text" placeholder="Sube una foto de portada" v-model="pathh">
-                                            </div>          
-                                        </div>
-                                        <div class="input-field col m12">
-                                            <a href="#!" class="btn" v-on:click="crearJuego">Ingresar videojuego</a>
-                                        </div>
+                        <div class="card-content">
+                            <div class="row">
 
+                                <h4 class="center">Crea un juego</h4>
+                                <div class="input-field col m12 s12">
+
+                                    <input id="nombre" v-model="nombre" type="text" class="validate">
+                                    <label for="nombre">Titulo Juego</label>
+                                </div>
+
+                                <div class="input-field col m12 s12">
+                                    <span class="black-text left">Historia resumida del juego</span>
+                                    <textarea v-model="resumen" id="resumen" class="materialize-textarea"></textarea>
+                                </div>
+
+                                <div class="input-field col m6 s12">
+                                    <select v-model="com">
+                                        <option value="" disabled>Desarrolladora</option>
+                                        <option v-for="c in compania" v-bind:value="c.id_compania">
+                                            {{ c.nombre }}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="input-field col m6 s12">
+                                    <select v-model="gen">
+                                        <option value="" disabled>Categoria</option>
+                                        <option v-for="g in genero" v-bind:value="g.id_categoria">
+                                            {{ g.categoria}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="input-field col m12 s12">
+                                    <select v-model="sec">
+                                        <option value="" disabled>Juego secuela</option>
+                                        <option v-for="s in secuela" v-bind:value="s.id_juego">
+                                            {{ s.nombre}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="input-field file-field col m12">
+                                    <div class="btn-floating">
+                                        <span><i class="material-icons">image</i></span>
+                                        <input type="file" @change="processFile($event)" accept="image/png, image/gif, image/jpeg">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path" disabled type="text" placeholder="Sube una foto de portada" v-model="pathh">
                                     </div>
                                 </div>
+                                <div class="input-field col m12">
+                                    <a href="#!" class="btn" v-on:click="crearJuego">Ingresar videojuego</a>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </nav>
+        </div>
+        </div>
+
 
 
 
@@ -143,14 +173,14 @@ $videojuegos = $modelo->cargarAllVideojuegos();
 
 
 
-        <?php 
-            
-            header("Location: errorScreen.php");
-            
-            ?>
+        <?php
+
+        header("Location: errorScreen.php");
+
+        ?>
 
 
-        
+
     <?php } ?>
 
 </body>
@@ -161,5 +191,22 @@ $videojuegos = $modelo->cargarAllVideojuegos();
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="../js/crearJuego.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var elems = document.querySelectorAll('select');
+        var instances = M.Sidenav.init(elems);
+        var instances = M.FormSelect.init(elems);
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
+</script>
 
 </html>

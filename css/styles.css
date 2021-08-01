@@ -611,6 +611,9 @@ p.margin-botom-style{
 
 }
 
+.pagination li.active a {
+  background: #1f0097;
+}
 
 @media screen and (max-width: 728px) {
   .margen-arriba-77 {
