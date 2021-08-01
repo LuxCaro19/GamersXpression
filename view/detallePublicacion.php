@@ -122,30 +122,36 @@
                                     </div>
                                 </div>
                             </div>
-                            <div v-for="c in comentariosList" v-if="comentariosList.length>0">
-                                <div class="col m12 s12">
-                                    <div class="card-comentarios">
+                            <div class="col m12 s12">
+                                <div class="card-comentarios">
+                                    <div v-for="c in comentariosList" v-if="comentariosList.length>0">
+
                                         <div class="card">
                                             <div class=" parComent card-content">
-                                                <div class="row">
 
-                                                    <div class="col m10 s12">
-                                                        <span>{{c.usuario}}</span>
-                                                        <p>{{c.comentario}}</p>
-                                                    </div>
-                                                    <div class="col m2 s12">
-                                                        <span class="rigth">{{c.fecha}}</span>
-                                                        <a v-if="usrActual==c.id_user" v-on:click="alertDLTCOM(c.id_comment)" href="#!" data-tooltip="Borrar Comentario" data-position="right" class="right btn-flat tooltipped"><i class="material-icons">delete</i></a> <br>
-                                                        <a v-if="usrActual!=c.id_user" v-on:click="alrtREPCOM(c.id_comment)" href="#!" data-tooltip="Reportar Comentario" data-position="right" class="right btn-flat tooltipped"><i class="material-icons">error</i></a>
-                                                    </div>
-                                                </div>
+                                                <a v-if="usrActual!=c.id_user" v-on:click="alrtREPCOM(c.id_comment)" href="#!" data-tooltip="Reportar Comentario" data-position="right" class="right btn-flat tooltipped"><i class="material-icons">error</i></a>
+                                                
+                                                <span class="right">{{c.fecha}}</span>
+
+                                                <p>{{c.usuario}}</p>
+                                                <span>{{c.comentario}}</span>
+
+
+
+                                                <a v-if="usrActual==c.id_user" v-on:click="alertDLTCOM(c.id_comment)" href="#!" data-tooltip="Borrar Comentario" data-position="right" class="right btn-flat tooltipped"><i class="material-icons">delete</i></a> <br>
+
+
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             <div v-if="comentariosList.length==0">
-                                <h5 class="center">Aun no hay comentarios, presiona el icono de comentarios para comentar</h5>
+                                <div class="col m12 s12">
+                                    <h5 class="center">Aun no hay comentarios, presiona el icono de comentarios para comentar</h5>
+                                </div>
                             </div>
 
                             <div id="eliminar" class="modal">

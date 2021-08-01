@@ -133,7 +133,11 @@
     <?php } else { ?>
 
 
-
+        <?php 
+            
+            header("Location: errorScreen.php");
+            
+            ?>
 
 
     <?php } ?>

@@ -147,7 +147,7 @@ p.white-text.parrafoIndex {
 
 .card-comentarios {
   background-color: #cdcdcd;
-  padding: 3px;
+  padding: 10px;
 }
 
 .card.margin {
@@ -565,6 +565,53 @@ tr td p {
   margin-bottom: 80px;
 }
 
+.tabs .indicator{
+
+
+  background-color: #000da2;
+
+}
+
+.tabs .tab a:hover, .tabs .tab a.active {
+  background-color:transparent;
+}
+
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+  background-color: rgb(104 104 109 / 21%);
+  outline: none;
+}
+
+.alert-danger {
+  color: #842029;
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+  position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.row .col.s12 {
+
+  margin-top: 23px;
+
+}
+
+p.margin-botom-style{
+
+  margin-bottom: 50px;
+  font-size: 20px
+}
+
+.dropdown-content li>a, .dropdown-content li>span {
+
+  font-size: 18px;
+  color: #191369;
+
+}
+
+
 @media screen and (max-width: 728px) {
   .margen-arriba-77 {
     margin-top: 0px;
@@ -623,6 +670,11 @@ tr td p {
     width: 130px;
   }
 
+  .row .col.s12 {
+
+    margin-bottom: 40px;
+  
+  }
 
 
 }

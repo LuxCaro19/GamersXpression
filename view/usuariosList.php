@@ -22,7 +22,7 @@
 
     <?php
     session_start();
-    if (isset($_SESSION['user'])) { ?>
+    if (isset($_SESSION['user'])&&$_SESSION['user']['id_tipo_usuario'] == 2) { ?>
 
 
 
@@ -150,34 +150,13 @@
 
 
 
+        <?php 
+            
+            header("Location: errorScreen.php");
+            
+            ?>
 
-        <div class="container center">
-
-            <div class="row error">
-
-                <div class="col l6 m6 s12 offset-l3 offset-m3">
-
-                    <div class="card">
-
-                        <div class="card-content">
-
-                            <img src="../img/logoOptica.png" alt="">
-
-                            <h2 class="red-text">Te has equivocado de camino amigo</h2>
-                            <h4 class="black-text">no dispones de accesso para estar aquí</h4>
-                            <p>Debes iniciar sesión, vuelve al <a href="../index.php">home</a> e inicia sesión.</p>
-                            <p>Creadores de la pagina: <a href="../creadores.html">creadores</a></p>
-
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
+        
 
     <?php } ?>
 

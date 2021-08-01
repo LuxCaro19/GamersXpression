@@ -22,7 +22,8 @@
 
     <?php
     session_start();
-    if (isset($_SESSION['user'])) { ?>
+    if (isset($_SESSION['user'])&&$_SESSION['user']['id_tipo_usuario'] == 1) { ?>
+
 
 
 
@@ -63,15 +64,15 @@
                 <div class="col l12 m12 s12">
                     <div class="card">
 
-                        <div class="card-content">
+                        <div class="card-content center">
                             <h3>Gestion De Reportes</h3>
 
 
                             <div class="row">
                                 <div class="col s12">
                                     <ul class="tabs">
-                                        <li class="tab col s3"><a class="active" href="#com" v-on:click="cargarReportes(1)">Comentarios</a></li>
-                                        <li class="tab col s3"><a href="#pub" v-on:click="cargarReportes(2)">Publicaciones</a></li>
+                                        <li class="tab col s3"><a class="active indigo-text text-darken" href="#com" v-on:click="cargarReportes(1)">Comentarios</a></li>
+                                        <li class="tab col s3"><a href="#pub" v-on:click="cargarReportes(2)" class="indigo-text text-darken">Publicaciones</a></li>
                                     </ul>
                                 </div>
                                 <div id="com" class="col s12">
@@ -97,7 +98,10 @@
                                         </tbody>
                                     </table>
                                     <h4 v-else>
+                                        <div class="alert-danger">
                                         No existen comentarios reportados actualmente
+                                        </div>
+                                        
                                     </h4>
 
                                 </div>
@@ -125,7 +129,12 @@
                                         </tbody>
                                     </table>
                                     <h4 v-else>
+                                        <div class="alert-danger">
+
+                                        
                                         No existen publicaciones reportadas actualmente
+
+                                        </div>
                                     </h4>
 
                                 </div>
@@ -178,8 +187,9 @@
                 <div id="verPub" class="modal">
                     <div class="modal-content">
                         <h4>Detalles de publicacion</h4>
+
                         <p>Reportado por : {{reportadoPor}}</p>
-                        <p>Razon : {{razonSel}}</p>
+                        <p class="right">Razon : {{razonSel}}</p>
                         <p>Detalles: {{detallesSel}}</p>
                         <div class="row">
                             <div class="col m1">
@@ -233,34 +243,13 @@
 
 
 
+        <?php 
+            
+            header("Location: errorScreen.php");
+            
+            ?>
 
-        <div class="container center">
-
-            <div class="row error">
-
-                <div class="col l6 m6 s12 offset-l3 offset-m3">
-
-                    <div class="card">
-
-                        <div class="card-content">
-
-                            <img src="../img/logoOptica.png" alt="">
-
-                            <h2 class="red-text">Te has equivocado de camino amigo</h2>
-                            <h4 class="black-text">no dispones de accesso para estar aquí</h4>
-                            <p>Debes iniciar sesión, vuelve al <a href="../index.php">home</a> e inicia sesión.</p>
-                            <p>Creadores de la pagina: <a href="../creadores.html">creadores</a></p>
-
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
+    
 
     <?php } ?>
 
