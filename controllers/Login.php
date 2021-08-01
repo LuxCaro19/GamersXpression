@@ -56,7 +56,7 @@ class ControlLogin{
                    //si el usuario es moderador
                     case "1":
                         //header("Location: ../view/publicaciones.php");
-                        echo "usted es moderador";
+                        header("Location: ../view/reporteList.php");
                         break;
                     //si el usuario es un administrador
                     case "2":

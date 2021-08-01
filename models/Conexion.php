@@ -14,9 +14,9 @@ class Conexion{
 
     
     
-    //public static $user="root";
-    //public static $pass="";
-    //public static $URL="mysql:host=localhost;dbname=gamersxpression";
+    /*public static $user="root";
+    public static $pass="";
+    public static $URL="mysql:host=localhost;dbname=gamersxpression";*/
 
 
 

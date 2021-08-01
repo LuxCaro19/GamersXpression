@@ -37,36 +37,19 @@ class ControlComentario{
         $model= new Comentarios();
 
         if($this->coment==""){
-
-
-            $_SESSION ['error'] = "Realice un comentario";
-            header("Location: $codigo");
-
-            $_SESSION['id_public']=$this->id_public;
-            
-
-        }else{
-
-
-            $count= $model->crearComentario($this->coment, $this->fecha,$this->id_public,$id_user);
-
+            $mensaje = ["msg"=>"el comentario no puede estar vacio","ok"=>"no"];
+            echo json_encode($mensaje); 
+            return;
         }
-
-       
-
-
+        $count= $model->crearComentario($this->coment, $this->fecha,$this->id_public,$id_user);
+        
         if($count==1){
-
-
-            header("Location: $codigo");
-
-            $_SESSION['id_public']=$this->id_public;
+            $mensaje = ["msg"=>"Se ha comentado la publicacion","ok"=>"si"];
+            echo json_encode($mensaje); 
             
-
         }else{
-
-            echo "Hubo un error";
-
+            $mensaje = ["msg"=>"no se ha podido comentar","ok"=>"no"];
+            echo json_encode($mensaje); 
         }
         
         

@@ -75,12 +75,20 @@ new Vue({
             this.pagina = 0;
             this.busqueda = this.busquedadalsa;
             this.cargarJuegos();
+        },
+        cargarMaterializecss: function(){
+            $(document).ready(function(){
+                $('.sidenav').sidenav();
+                $('select').formSelect();
+                $('.modal').modal();
+            });
         }
            
        
     },
 
     created(){
+        this.cargarMaterializecss();
         this.cargarJuegos();
     },
 
